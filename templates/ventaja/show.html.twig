@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ventaja{% endblock %}
+
+{% block body %}
+    <h1>Ventaja</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ ventaja.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ ventaja.titulo }}</td>
+            </tr>
+            <tr>
+                <th>NombreEmpresa</th>
+                <td>{{ ventaja.nombreEmpresa }}</td>
+            </tr>
+            <tr>
+                <th>Descripcion</th>
+                <td>{{ ventaja.descripcion }}</td>
+            </tr>
+            <tr>
+                <th>Imagen</th>
+                <td>{{ ventaja.imagen }}</td>
+            </tr>
+            <tr>
+                <th>Enlace</th>
+                <td>{{ ventaja.enlace }}</td>
+            </tr>
+            <tr>
+                <th>CodigoDescuento</th>
+                <td>{{ ventaja.codigoDescuento }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('ventaja_index') }}">back to list</a>
+
+    <a href="{{ path('ventaja_edit', {'id': ventaja.id}) }}">edit</a>
+
+    {{ include('ventaja/_delete_form.html.twig') }}
+{% endblock %}

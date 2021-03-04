@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Noticia{% endblock %}
+
+{% block body %}
+    <h1>Noticia</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ noticium.id }}</td>
+            </tr>
+            <tr>
+                <th>Titulo</th>
+                <td>{{ noticium.titulo }}</td>
+            </tr>
+            <tr>
+                <th>ImagenDestacada</th>
+                <td>{{ noticium.imagenDestacada }}</td>
+            </tr>
+            <tr>
+                <th>TextoNoticia</th>
+                <td>{{ noticium.textoNoticia }}</td>
+            </tr>
+            <tr>
+                <th>FechaPublicacion</th>
+                <td>{{ noticium.fechaPublicacion ? noticium.fechaPublicacion|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('noticia_index') }}">back to list</a>
+
+    <a href="{{ path('noticia_edit', {'id': noticium.id}) }}">edit</a>
+
+    {{ include('noticia/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ventaja index{% endblock %}
+
+{% block body %}
+    <h1>Ventaja index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>NombreEmpresa</th>
+                <th>Descripcion</th>
+                <th>Imagen</th>
+                <th>Enlace</th>
+                <th>CodigoDescuento</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ventaja in ventajas %}
+            <tr>
+                <td>{{ ventaja.id }}</td>
+                <td>{{ ventaja.titulo }}</td>
+                <td>{{ ventaja.nombreEmpresa }}</td>
+                <td>{{ ventaja.descripcion }}</td>
+                <td>{{ ventaja.imagen }}</td>
+                <td>{{ ventaja.enlace }}</td>
+                <td>{{ ventaja.codigoDescuento }}</td>
+                <td>
+                    <a href="{{ path('ventaja_show', {'id': ventaja.id}) }}">show</a>
+                    <a href="{{ path('ventaja_edit', {'id': ventaja.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('ventaja_new') }}">Create new</a>
+{% endblock %}

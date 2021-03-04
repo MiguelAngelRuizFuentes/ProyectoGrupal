@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MeInteresa index{% endblock %}
+
+{% block body %}
+    <h1>MeInteresa index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Interesa</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for me_interesa in me_interesas %}
+            <tr>
+                <td>{{ me_interesa.id }}</td>
+                <td>{{ me_interesa.interesa ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('me_interesa_show', {'id': me_interesa.id}) }}">show</a>
+                    <a href="{{ path('me_interesa_edit', {'id': me_interesa.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('me_interesa_new') }}">Create new</a>
+{% endblock %}

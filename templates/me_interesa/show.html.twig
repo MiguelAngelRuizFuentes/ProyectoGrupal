@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MeInteresa{% endblock %}
+
+{% block body %}
+    <h1>MeInteresa</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ me_interesa.id }}</td>
+            </tr>
+            <tr>
+                <th>Interesa</th>
+                <td>{{ me_interesa.interesa ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('me_interesa_index') }}">back to list</a>
+
+    <a href="{{ path('me_interesa_edit', {'id': me_interesa.id}) }}">edit</a>
+
+    {{ include('me_interesa/_delete_form.html.twig') }}
+{% endblock %}

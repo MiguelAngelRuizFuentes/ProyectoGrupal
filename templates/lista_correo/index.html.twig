@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ListaCorreo index{% endblock %}
+
+{% block body %}
+    <h1>ListaCorreo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Correos</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lista_correo in lista_correos %}
+            <tr>
+                <td>{{ lista_correo.id }}</td>
+                <td>{{ lista_correo.correos ? lista_correo.correos|join(', ') : '' }}</td>
+                <td>
+                    <a href="{{ path('lista_correo_show', {'id': lista_correo.id}) }}">show</a>
+                    <a href="{{ path('lista_correo_edit', {'id': lista_correo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('lista_correo_new') }}">Create new</a>
+{% endblock %}

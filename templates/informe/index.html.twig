@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Informe index{% endblock %}
+
+{% block body %}
+    <h1>Informe index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Campos</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for informe in informes %}
+            <tr>
+                <td>{{ informe.id }}</td>
+                <td>{{ informe.campos ? informe.campos|join(', ') : '' }}</td>
+                <td>
+                    <a href="{{ path('informe_show', {'id': informe.id}) }}">show</a>
+                    <a href="{{ path('informe_edit', {'id': informe.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('informe_new') }}">Create new</a>
+{% endblock %}
