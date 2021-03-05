@@ -20,10 +20,10 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/datosPerfil", name="datosPerfil")
+     * @Route("/perfil", name="perfil")
      * @IsGranted("ROLE_USER")
      */
-    public function datosPerfil(): Response
+    public function perfil(): Response
     {
         return $this->render('main/perfil.html.twig', [
             'controller_name' => 'MainController',

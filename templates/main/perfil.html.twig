@@ -4,126 +4,314 @@
 
 {% block body %}
 
+<link rel="stylesheet" href="/css/perfil.css">
+
 <h1>Perfil</h1>
 
 <hr>
 
-<h3>Nombre: </h3>
-<p>{{app.user.nombre}}</p>
-<input type="text" name="nombre">
-<button>Enviar</button><br>
-<h3>Primer apellido: </h3>
-<p>{{app.user.apellido1}}</p>
-<input type="text" name="apellido1">
-<button>Enviar</button><br>
-<h3>Segundo apellido: </h3>
-<p>{{app.user.apellido2}}</p>
-<input type="text" name="apellido2">
-<button>Enviar</button><br>
-<h3>DNI: </h3>
-<p>{{app.user.dni}}</p>
-<input type="text" name="dni">
-<button>Enviar</button><br>
-<h3>Fecha de nacimiento: </h3>
-<p>{{app.user.fechaNacimiento}}</p>
-<input type="date" name="fechaNacimiento">
-<button>Enviar</button><br>
-<h3>Género: </h3>
-<p>{{app.user.genero}}</p>
-<input type="radio" name="genero" value="Hombre"> Hombre<br>
-<input type="radio" name="genero" value="Mujer"> Mujer<br>
-<input type="radio" name="genero" value="Otro"> Otro<br>
-<input type="radio" name="genero" value="Prefiero no responder"> Prefiero no responder<br><br>
-<button>Enviar</button><br>
-<h3>Calle: </h3>
-<p>{{app.user.calle}}</p>
-<input type="text" name="calle">
-<button>Enviar</button><br>
-<h3>Número domicilio: </h3>
-<p>{{app.user.numeroDireccion}}</p>
-<input type="text" name="numeroDireccion">
-<button>Enviar</button><br>
-<h3>Escalera/Piso/Etc: </h3>
-<p>{{app.user.escaleraPiso}}</p>
-<input type="text" name="escaleraPiso">
-<button>Enviar</button><br>
-<h3>Municipio: </h3>
-<p>{{app.user.municipio}}</p>
-<input type="text" name="municipio">
-<button>Enviar</button><br>
-<h3>provincia: </h3>
-<p>{{app.user.provincia}}</p>
-<input type="text" name="provincia">
-<button>Enviar</button><br>
-<h3>Código Postal: </h3>
-<p>{{app.user.codigoPostal}}</p>
-<input type="text" name="cp">
-<button>Enviar</button><br>
-<h3>Teléfono móvil: </h3>
-<p>{{app.user.telefonoMovil}}</p>
-<input type="number" name="movil">
-<button>Enviar</button><br>
-<h3>Teléfono Fijo: </h3>
-<p>{{app.user.telefonoFijo}}</p>
-<input type="number" name="fijo">
-<button>Enviar</button><br>
-<h3>Web personal: </h3>
-<p>{{app.user.webPersonal}}</p>
-<input type="text" name="webPersonal">
-<button>Enviar</button><br>
-<h3>Plataformas de juego: </h3>
-<input type="checkbox" name="consola" value="consolaSobremesa"> Consola sobremesa<br>
-<input type="checkbox" name="consolaPortatil" value="consolaPortatil"> Consola portatil<br>
-<input type="checkbox" name="movil" value="movil"> Móvil<br>
-<input type="checkbox" name="pcGaming" value="pcGaming"> PC Gaming<br>
-<input type="checkbox" name="simulador" value="simulador"> Simuladores<br>
-<input type="checkbox" name="arcade" value="arcade"> Máquinas arcade<br>
-<input type="checkbox" name="vr/ar" value="vr/ar"> VR/AR<br>
-<input type="checkbox" name="icloud" value="icloud"> iCloud<br>
-<input type="checkbox" name="otros" value="otros"> Otros<br><br>
-<button>Enviar</button><br>
-<h3>Tipos de juego: </h3>
-<input type="checkbox" name="moba" value="moba"> MOBA<br>
-<input type="checkbox" name="shooter" value="shooter"> Shooter<br>
-<input type="checkbox" name="deportivo" value="deportivo"> Deportivo<br>
-<input type="checkbox" name="accion" value="accion"> Acción<br>
-<input type="checkbox" name="aventuras" value="aventuras"> Aventuras<br>
-<input type="checkbox" name="lucha" value="lucha"> Lucha<br>
-<input type="checkbox" name="simulacion" value="simulacion"> Simulación<br>
-<input type="checkbox" name="plataformas" value="plataformas"> Plataformas<br>
-<input type="checkbox" name="rpg" value="rpg"> RPG<br>
-<input type="checkbox" name="estrategia" value="estrategia"> Estrategia<br><br>
-<button>Enviar</button><br>
-<h3>Cuentas sociales: </h3>
-<input type="text" name="twitter" placeholder="Pon un enlace a tu cuenta"> Twitter<br><br>
-<input type="text" name="facebook" placeholder="Pon un enlace a tu cuenta"> Facebook<br><br>
-<input type="text" name="instagram" placeholder="Pon un enlace a tu cuenta"> Instagram<br><br>
-<input type="text" name="youtube" placeholder="Pon un enlace a tu cuenta"> YouTube<br><br>
-<input type="text" name="twitch" placeholder="Pon un enlace a tu cuenta"> Twitch<br><br>
-<input type="text" name="psn" placeholder="Pon un enlace a tu cuenta"> PlayStationNetwork<br><br>
-<input type="text" name="steam" placeholder="Pon un enlace a tu cuenta"> Steam<br><br>
-<input type="text" name="nintendo" placeholder="Pon un enlace a tu cuenta"> Nintendo Network<br><br>
-<input type="text" name="epicgames" placeholder="Pon un enlace a tu cuenta"> Epic Games<br><br>
-<button>Enviar</button><br>
-<h3>Nombre jugador: </h3>
-<p>{{app.user.nombreJugador}}</p>
-<input type="text" name="nombreJugador">
-<button>Enviar</button><br>
-<h3>Aceptaciones: </h3>
-<input type="checkbox" name="privacidad" value="privacidad"> Política de privacidad.<br>
-<input type="checkbox" name="almacenarDatos" value="almacenarDatos"> Permiso para almacenar datos.<br>
-<input type="checkbox" name="comunicaciones" value="comunicaciones"> Aceptar recibir comunicaciones comerciales.<br>
-<input type="checkbox" name="salud" value="salud"> Conozco las recomedaciones sobre hábitos saludables y me comprometo a seguir los valores éticos en el juego y competiciones en los que participe.<br><br>
+<div id="email">
+    <h3>Email: </h3>
+    <p>{{app.user.email}}</p>
+</div>
 
-<button>Enviar</button><br>
+<div id="nombre">
+    <h3>Nombre: </h3>
+    {% if app.user.nombre != null %}
+        <p>{{app.user.nombre}}</p>
+    {% else %}
+        <p>No ha introducido su nombre</p>
+    {% endif %}
+    <a>Editar nombre</a>
+    <div class="mostrar">
+        <input type="text" name="nombre" placeholder="Introduzca su nombre">
+        <button>Enviar</button><br>
+    </div>
+</div>
 
+<div id="apellido1">
+    <h3>Primer apellido: </h3>
+    {% if app.user.apellido1 != null %}
+        <p>{{app.user.apellido1}}</p>
+    {% else %}
+        <p>No ha introducido su primer apellido</p>
+    {% endif %}
+    <a>Editar primer apellido</a>
+    <div class="mostrar">
+        <input type="text" name="apellido1" placeholder="Introduzca su primer apellido">
+        <button>Enviar</button><br>
+    </div>
+</div>
 
-    
-{# <form method="post" action="{{ path('main')}}">
-    <h2>Datos personales:</h2>
-    <label for="nombre">Nombre: </label>
-    <input type="text" name="nombre" /><br>
-    <label for
-</form> #}
+<div id="apellido2">
+    <h3>Segundo apellido: </h3>
+    {% if app.user.apellido2 != null %}
+        <p>{{app.user.apellido2}}</p>
+    {% else %}
+        <p>No ha introducido su segundo apellido</p>
+    {% endif %}
+    <a>Editar segundo apellido</a>
+    <div class="mostrar">
+        <input type="text" name="apellido2" placeholder="Introduzca su segundo apellido">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="dni">
+    <h3>DNI: </h3>
+    {% if app.user.dni != null %}
+        <p>{{app.user.dni}}</p>
+    {% else %}
+        <p>No ha introducido su DNI</p>
+    {% endif %}
+    <a>Editar DNI</a>
+    <div class="mostrar">
+        <input type="text" name="dni" placeholder="Introduzca su DNI">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="fechaNacimiento">
+    <h3>Fecha de nacimiento: </h3>
+    {% if app.user.fechaNacimiento != null %}
+        <p>{{app.user.fechaNacimiento}}</p>
+    {% else %}
+        <p>No ha introducido su fecha de nacimiento</p>
+    {% endif %}
+    <a>Editar fecha de nacimiento</a>
+    <div class="mostrar">
+        <input type="date" name="fechaNacimiento">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="genero">
+    <h3>Género: </h3>
+    {% if app.user.genero != null %}
+        <p>{{app.user.genero}}</p>
+    {% else %}
+        <p>No ha introducido su género</p>
+    {% endif %}
+    <a>Editar género</a>
+    <div class="mostrar">
+        <p>Seleccione su género</p>
+        <input type="radio" name="genero" value="Hombre"> Hombre<br>
+        <input type="radio" name="genero" value="Mujer"> Mujer<br>
+        <input type="radio" name="genero" value="Otro"> Otro<br>
+        <input type="radio" name="genero" value="Prefiero no responder"> Prefiero no responder<br><br>
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="calle">
+    <h3>Calle: </h3>
+    {% if app.user.calle != null %}
+        <p>{{app.user.calle}}</p>
+    {% else %}
+        <p>No ha introducido su calle</p>
+    {% endif %}
+    <a>Editar calle</a>
+    <div class="mostrar">
+        <input type="text" name="calle" placeholder="Introduzca su calle">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="numeroDireccion">
+    <h3>Número domicilio: </h3>
+    {% if app.user.numeroDireccion != null %}
+        <p>{{app.user.numeroDireccion}}</p>
+    {% else %}
+        <p>No ha introducido su número de domicilio</p>
+    {% endif %}
+    <a>Editar número de domicilio</a>
+    <div class="mostrar">
+        <input type="text" name="numeroDireccion" placeholder="Introduzca su número de domicilio">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="escaleraPiso">
+    <h3>Escalera/Piso/Etc: </h3>
+    {% if app.user.escaleraPiso != null %}
+        <p>{{app.user.escaleraPiso}}</p>
+    {% else %}
+        <p>No ha introducido su escalera/piso/etc.</p>
+    {% endif %}
+    <a>Editar escalera/piso/etc.</a>
+    <div class="mostrar">
+        <input type="text" name="escaleraPiso" placeholder="Introduzca su escalera/piso/etc.">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="municipio">
+    <h3>Municipio: </h3>
+    {% if app.user.municipio != null %}
+        <p>{{app.user.municipio}}</p>
+    {% else %}
+        <p>No ha introducido su municipio</p>
+    {% endif %}
+    <a>Editar municipio</a>
+    <div class="mostrar">
+        <input type="text" name="municipio" placeholder="Introduzca su municipio">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="provincia">
+    <h3>Provincia: </h3>
+    {% if app.user.provincia != null %}
+        <p>{{app.user.provincia}}</p>
+    {% else %}
+        <p>No ha introducido su municipio</p>
+    {% endif %}
+    <a>Editar provincia</a>
+    <div class="mostrar">
+        <input type="text" name="provincia" placeholder="Introduzca su provincia">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="codigoPostal">
+    <h3>Código Postal: </h3>
+    {% if app.user.codigoPostal != null %}
+        <p>{{app.user.codigoPostal}}</p>
+    {% else %}
+        <p>No ha introducido su codigo postal</p>
+    {% endif %}
+    <a>Editar codigo postal</a>
+    <div class="mostrar">
+        <input type="number" name="codigoPostal" min="10000" max="99999">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="movil">
+    <h3>Teléfono móvil: </h3>
+    {% if app.user.telefonoMovil != null %}
+        <p>{{app.user.telefonoMovil}}</p>
+    {% else %}
+        <p>No ha introducido su telefono móvil</p>
+    {% endif %}
+    <a>Editar telefono móvil</a>
+    <div class="mostrar">
+        <input type="number" name="movil" min="600000000" max="799999999">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="fijo">
+    <h3>Teléfono Fijo: </h3>
+    {% if app.user.telefonoFijo != null %}
+        <p>{{app.user.telefonoFijo}}</p>
+    {% else %}
+        <p>No ha introducido su telefono fijo</p>
+    {% endif %}
+    <a>Editar telefono fijo</a>
+    <div class="mostrar">
+        <input type="number" name="fijo" min="800000000" max="999999999">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="webPersonal">
+    <h3>Web personal: </h3>
+    {% if app.user.webPersonal != null %}
+        <p>{{app.user.webPersonal}}</p>
+    {% else %}
+        <p>No ha introducido su web personal</p>
+    {% endif %}
+    <a>Editar web personal</a>
+    <div class="mostrar">
+        <input type="text" name="webPersonal" placeholder="Introduzca su web personal">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="plataformas">
+    <h3>Plataformas de juego: </h3>
+    <a>Editar plataformas de juego</a>
+    <div class="mostrar">
+        <p>Seleccione sus plataformas de juego</p>
+        <input type="checkbox" name="consola" value="consolaSobremesa"> Consola sobremesa<br>
+        <input type="checkbox" name="consolaPortatil" value="consolaPortatil"> Consola portatil<br>
+        <input type="checkbox" name="movil" value="movil"> Móvil<br>
+        <input type="checkbox" name="pcGaming" value="pcGaming"> PC Gaming<br>
+        <input type="checkbox" name="simulador" value="simulador"> Simuladores<br>
+        <input type="checkbox" name="arcade" value="arcade"> Máquinas arcade<br>
+        <input type="checkbox" name="vr/ar" value="vr/ar"> VR/AR<br>
+        <input type="checkbox" name="icloud" value="icloud"> iCloud<br>
+        <input type="checkbox" name="otros" value="otros"> Otros<br><br>
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="tiposJuego">
+    <h3>Tipos de juego: </h3>
+    <a>Editar tipos de juego</a>
+    <div class="mostrar">
+        <p>Seleccione sus tipos de juego</p>
+        <input type="checkbox" name="moba" value="moba"> MOBA<br>
+        <input type="checkbox" name="shooter" value="shooter"> Shooter<br>
+        <input type="checkbox" name="deportivo" value="deportivo"> Deportivo<br>
+        <input type="checkbox" name="accion" value="accion"> Acción<br>
+        <input type="checkbox" name="aventuras" value="aventuras"> Aventuras<br>
+        <input type="checkbox" name="lucha" value="lucha"> Lucha<br>
+        <input type="checkbox" name="simulacion" value="simulacion"> Simulación<br>
+        <input type="checkbox" name="plataformas" value="plataformas"> Plataformas<br>
+        <input type="checkbox" name="rpg" value="rpg"> RPG<br>
+        <input type="checkbox" name="estrategia" value="estrategia"> Estrategia<br><br>
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="socialMedia">
+    <h3>Cuentas sociales: </h3>
+    <a>Editar cuentas sociales</a>
+    <div class="mostrar">
+        <p>Seleccione sus cuentas sociales</p>
+        <input type="text" name="twitter" placeholder="Pon un enlace a tu cuenta"> Twitter<br><br>
+        <input type="text" name="facebook" placeholder="Pon un enlace a tu cuenta"> Facebook<br><br>
+        <input type="text" name="instagram" placeholder="Pon un enlace a tu cuenta"> Instagram<br><br>
+        <input type="text" name="youtube" placeholder="Pon un enlace a tu cuenta"> YouTube<br><br>
+        <input type="text" name="twitch" placeholder="Pon un enlace a tu cuenta"> Twitch<br><br>
+        <input type="text" name="psn" placeholder="Pon un enlace a tu cuenta"> PlayStationNetwork<br><br>
+        <input type="text" name="steam" placeholder="Pon un enlace a tu cuenta"> Steam<br><br>
+        <input type="text" name="nintendo" placeholder="Pon un enlace a tu cuenta"> Nintendo Network<br><br>
+        <input type="text" name="epicgames" placeholder="Pon un enlace a tu cuenta"> Epic Games<br><br>
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="playerName">
+    <h3>Nombre jugador: </h3>
+    {% if app.user.nombreJugador != null %}
+        <p>{{app.user.nombreJugador}}</p>
+    {% else %}
+        <p>No ha introducido su nombre de jugador</p>
+    {% endif %}
+    <a>Editar nombre de jugador</a>
+    <div class="mostrar">
+        <input type="text" name="nombreJugador" placeholder="Introduzca su nombre de jugador">
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<div id="booleans">
+    <h3>Aceptaciones: </h3>
+    <a>Editar aceptaciones</a>
+    <div class="mostrar">
+        <p>Acepte las siguientes condiciones</p>
+        <input type="checkbox" name="privacidad" value="privacidad"> Política de privacidad.<br>
+        <input type="checkbox" name="almacenarDatos" value="almacenarDatos"> Permiso para almacenar datos.<br>
+        <input type="checkbox" name="comunicaciones" value="comunicaciones"> Aceptar recibir comunicaciones comerciales.<br>
+        <input type="checkbox" name="salud" value="salud"> Conozco las recomedaciones sobre hábitos saludables y me comprometo a seguir los valores éticos en el juego y competiciones en los que participe.<br><br>
+        <button>Enviar</button><br>
+    </div>
+</div>
+
+<script src="/js/perfil.js"></script>
+   
 
 {% endblock %}
