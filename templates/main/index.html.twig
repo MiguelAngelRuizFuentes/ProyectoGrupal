@@ -4,5 +4,10 @@
 
 {% block body %}
 
+{% if is_granted("ROLE_USER") %}
+    <button><a href="/datosPerfil">Verificar perfil con datos</a></button>
+    <br/>
+    <button><a href="/verificarDniAdmin">Verificar perfil con DNI</a></button>
+{% endif %}
 
 {% endblock %}

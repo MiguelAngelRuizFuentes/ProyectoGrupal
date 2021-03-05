@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+{{ form_start(dniVerificador) }}
+    {{ form_row(dniVerificador.fotoDni) }}
+
+    <button type="submit" class="btn">Enviar</button>
+{{ form_end(dniVerificador) }}
+
+{% endblock %}
