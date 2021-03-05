@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Perfil{% endblock %}
+
+{% block body %}
+
+<h1>Perfil</h1>
+
+<hr>
+
+<h3>Nombre: </h3>
+<p>{{app.user.nombre}}</p>
+<input type="text" name="nombre">
+<button>Enviar</button><br>
+<h3>Primer apellido: </h3>
+<p>{{app.user.apellido1}}</p>
+<input type="text" name="apellido1">
+<button>Enviar</button><br>
+<h3>Segundo apellido: </h3>
+<p>{{app.user.apellido2}}</p>
+<input type="text" name="apellido2">
+<button>Enviar</button><br>
+<h3>DNI: </h3>
+<p>{{app.user.dni}}</p>
+<input type="text" name="dni">
+<button>Enviar</button><br>
+<h3>Fecha de nacimiento: </h3>
+<p>{{app.user.fechaNacimiento}}</p>
+<input type="date" name="fechaNacimiento">
+<button>Enviar</button><br>
+<h3>Género: </h3>
+<p>{{app.user.genero}}</p>
+<input type="radio" name="genero" value="Hombre"> Hombre<br>
+<input type="radio" name="genero" value="Mujer"> Mujer<br>
+<input type="radio" name="genero" value="Otro"> Otro<br>
+<input type="radio" name="genero" value="Prefiero no responder"> Prefiero no responder<br><br>
+<button>Enviar</button><br>
+<h3>Calle: </h3>
+<p>{{app.user.calle}}</p>
+<input type="text" name="calle">
+<button>Enviar</button><br>
+<h3>Número domicilio: </h3>
+<p>{{app.user.numeroDireccion}}</p>
+<input type="text" name="numeroDireccion">
+<button>Enviar</button><br>
+<h3>Escalera/Piso/Etc: </h3>
+<p>{{app.user.escaleraPiso}}</p>
+<input type="text" name="escaleraPiso">
+<button>Enviar</button><br>
+<h3>Municipio: </h3>
+<p>{{app.user.municipio}}</p>
+<input type="text" name="municipio">
+<button>Enviar</button><br>
+<h3>provincia: </h3>
+<p>{{app.user.provincia}}</p>
+<input type="text" name="provincia">
+<button>Enviar</button><br>
+<h3>Código Postal: </h3>
+<p>{{app.user.codigoPostal}}</p>
+<input type="text" name="cp">
+<button>Enviar</button><br>
+<h3>Teléfono móvil: </h3>
+<p>{{app.user.telefonoMovil}}</p>
+<input type="number" name="movil">
+<button>Enviar</button><br>
+<h3>Teléfono Fijo: </h3>
+<p>{{app.user.telefonoFijo}}</p>
+<input type="number" name="fijo">
+<button>Enviar</button><br>
+<h3>Web personal: </h3>
+<p>{{app.user.webPersonal}}</p>
+<input type="text" name="webPersonal">
+<button>Enviar</button><br>
+<h3>Plataformas de juego: </h3>
+<input type="checkbox" name="consola" value="consolaSobremesa"> Consola sobremesa<br>
+<input type="checkbox" name="consolaPortatil" value="consolaPortatil"> Consola portatil<br>
+<input type="checkbox" name="movil" value="movil"> Móvil<br>
+<input type="checkbox" name="pcGaming" value="pcGaming"> PC Gaming<br>
+<input type="checkbox" name="simulador" value="simulador"> Simuladores<br>
+<input type="checkbox" name="arcade" value="arcade"> Máquinas arcade<br>
+<input type="checkbox" name="vr/ar" value="vr/ar"> VR/AR<br>
+<input type="checkbox" name="icloud" value="icloud"> iCloud<br>
+<input type="checkbox" name="otros" value="otros"> Otros<br><br>
+<button>Enviar</button><br>
+<h3>Tipos de juego: </h3>
+<input type="checkbox" name="moba" value="moba"> MOBA<br>
+<input type="checkbox" name="shooter" value="shooter"> Shooter<br>
+<input type="checkbox" name="deportivo" value="deportivo"> Deportivo<br>
+<input type="checkbox" name="accion" value="accion"> Acción<br>
+<input type="checkbox" name="aventuras" value="aventuras"> Aventuras<br>
+<input type="checkbox" name="lucha" value="lucha"> Lucha<br>
+<input type="checkbox" name="simulacion" value="simulacion"> Simulación<br>
+<input type="checkbox" name="plataformas" value="plataformas"> Plataformas<br>
+<input type="checkbox" name="rpg" value="rpg"> RPG<br>
+<input type="checkbox" name="estrategia" value="estrategia"> Estrategia<br><br>
+<button>Enviar</button><br>
+<h3>Cuentas sociales: </h3>
+<input type="text" name="twitter" placeholder="Pon un enlace a tu cuenta"> Twitter<br><br>
+<input type="text" name="facebook" placeholder="Pon un enlace a tu cuenta"> Facebook<br><br>
+<input type="text" name="instagram" placeholder="Pon un enlace a tu cuenta"> Instagram<br><br>
+<input type="text" name="youtube" placeholder="Pon un enlace a tu cuenta"> YouTube<br><br>
+<input type="text" name="twitch" placeholder="Pon un enlace a tu cuenta"> Twitch<br><br>
+<input type="text" name="psn" placeholder="Pon un enlace a tu cuenta"> PlayStationNetwork<br><br>
+<input type="text" name="steam" placeholder="Pon un enlace a tu cuenta"> Steam<br><br>
+<input type="text" name="nintendo" placeholder="Pon un enlace a tu cuenta"> Nintendo Network<br><br>
+<input type="text" name="epicgames" placeholder="Pon un enlace a tu cuenta"> Epic Games<br><br>
+<button>Enviar</button><br>
+<h3>Nombre jugador: </h3>
+<p>{{app.user.nombreJugador}}</p>
+<input type="text" name="nombreJugador">
+<button>Enviar</button><br>
+<h3>Aceptaciones: </h3>
+<input type="checkbox" name="privacidad" value="privacidad"> Política de privacidad.<br>
+<input type="checkbox" name="almacenarDatos" value="almacenarDatos"> Permiso para almacenar datos.<br>
+<input type="checkbox" name="comunicaciones" value="comunicaciones"> Aceptar recibir comunicaciones comerciales.<br>
+<input type="checkbox" name="salud" value="salud"> Conozco las recomedaciones sobre hábitos saludables y me comprometo a seguir los valores éticos en el juego y competiciones en los que participe.<br><br>
+
+<button>Enviar</button><br>
+
+
+    
+{# <form method="post" action="{{ path('main')}}">
+    <h2>Datos personales:</h2>
+    <label for="nombre">Nombre: </label>
+    <input type="text" name="nombre" /><br>
+    <label for
+</form> #}
+
+{% endblock %}

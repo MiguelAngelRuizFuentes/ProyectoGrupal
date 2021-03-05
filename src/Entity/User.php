@@ -204,6 +204,11 @@ class User implements UserInterface
      */
     private $meInteresas;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nombreJugador;
+
     public function __construct()
     {
         $this->ventajas = new ArrayCollection();
@@ -859,5 +864,17 @@ class User implements UserInterface
     public function __toString()
     {
         return $this->email;
+    }
+
+    public function getNombreJugador(): ?string
+    {
+        return $this->nombreJugador;
+    }
+
+    public function setNombreJugador(?string $nombreJugador): self
+    {
+        $this->nombreJugador = $nombreJugador;
+
+        return $this;
     }
 }
