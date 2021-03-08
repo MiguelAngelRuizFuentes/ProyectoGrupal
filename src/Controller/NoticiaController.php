@@ -9,6 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
 
 /**
  * @Route("/noticia")
@@ -28,14 +32,44 @@ class NoticiaController extends AbstractController
     /**
      * @Route("/new", name="noticia_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SluggerInterface $slugger): Response
     {
         $noticium = new Noticia();
+        $fecha = new \DateTime();
         $form = $this->createForm(NoticiaType::class, $noticium);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $brochureFile = $form->get('imagenDestacada')->getData();
+
+
+            if ($brochureFile) {
+                $originalFilename = pathinfo($brochureFile->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename.'-'.uniqid().'.'.$brochureFile->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $brochureFile->move(
+                        "img",
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'brochureFilename' property to store the PDF file name
+                // instead of its contents
+                $noticium->setImagenDestacada($newFilename);
+            }
+
+
+
             $entityManager = $this->getDoctrine()->getManager();
+            $noticium->setAutorNoticia($this->getUser());
+            $noticium->setFechaPublicacion($fecha);
             $entityManager->persist($noticium);
             $entityManager->flush();
 
