@@ -89,4 +89,35 @@ class MainController extends AbstractController
             'dniVerificador' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/verificarDniAdminFoto", name="verificarDniAdminFoto")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function verificarDniAdminFoto(): Response
+    {
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+        return $this->render('main/verificarDniAdminFoto.html.twig', [
+            'controller_name' => 'MainController',
+            'users' => $users
+        ]);
+    }
+
+    /**
+     * @Route("/verificarFotoDni", name="verificarFotoDni")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function verificarFotoDni(Request $request): Response
+    {
+        $user = $this->getDoctrine()->getRepository(User::class)->find($request->query->get('id_user'));
+        $entityManager = $this->getDoctrine()->getManager();
+        $verificado = 'verificado';
+
+        $user->setVerificado("1");
+
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return new Response($verificado);
+    }
 }

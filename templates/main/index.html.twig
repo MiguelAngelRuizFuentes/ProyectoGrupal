@@ -5,9 +5,13 @@
 {% block body %}
 
 {% if is_granted("ROLE_USER") %}
-    <button><a href="/datosPerfil">Verificar perfil con datos</a></button>
+    <button><a href="/perfil">Verificar perfil con datos</a></button>
     <br/>
     <button><a href="/verificarDniAdmin">Verificar perfil con DNI</a></button>
+    {% if is_granted("ROLE_ADMIN") %}
+        <br/>
+        <button><a href="/verificarDniAdminFoto">Usuarios para verificar perfil con foto DNI</a></button>
+    {% endif %}
 {% endif %}
 
 {% endblock %}

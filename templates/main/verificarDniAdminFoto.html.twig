@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+    <ul>
+        {% for user in users %}
+            {% if user.verificado == false %}
+                <li>{{ user.email }} - <img src="/fotosDniVerificar/{{ user.fotoDni }}" width="500px" height="500px" /> <button id="{{ user.id }}" onClick="verificarFotoDni({{ user.id }});">Verificar foto Dni</button></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <script>
+        function verificarFotoDni(id) {
+
+            function fail(data) {
+                alert("Error de AJAX: " + data + " - Perfil sin verificar por fallo.");
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/verificarFotoDni",
+                data: {id_user: id},
+                success: function(data) {
+                    alert("Perfil verificado");
+                    if(data == "verificado") {
+                        var verificado = "#" + id;
+                        $(verificado).parent().remove();
+                    }
+                },
+                error: fail
+            });
+        }
+    </script>
+
+{% endblock %}
