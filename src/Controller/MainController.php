@@ -111,7 +111,7 @@ class MainController extends AbstractController
     {
         $user = $this->getDoctrine()->getRepository(User::class)->find($request->query->get('id_user'));
         $entityManager = $this->getDoctrine()->getManager();
-        $verificado = 'verificado';
+        $verificado = 'verificar';
 
         $user->setVerificado("1");
 

@@ -25,7 +25,7 @@
                 data: {id_user: id},
                 success: function(data) {
                     alert("Perfil verificado");
-                    if(data == "verificado") {
+                    if(data == "verificar") {
                         var verificado = "#" + id;
                         $(verificado).parent().remove();
                     }
