@@ -123,8 +123,6 @@ class MainController extends AbstractController
         return new Response($verificado);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * @Route("/verVentajas", name="verVentajas")
      */
@@ -137,8 +135,7 @@ class MainController extends AbstractController
         ]);
     }
 
->>>>>>> 61fc5ec5249fb9f6f47d825ee6f6a6190f640e32
-     /**
+    /**
      * @Route("/verEventos", name="verEventos")
      */
     public function verEventos(): Response
@@ -261,15 +258,10 @@ class MainController extends AbstractController
      */
     public function changeFechaNacimiento(Request $request)
     { 
-<<<<<<< HEAD
-        $date = $request->query->get('newFechaNacimiento');
-        $instance = date($date);
-=======
         $date = $request->query->get('new');
         $instance = new \DateTime($date);
         //var_dump($instance);
         //exit;
->>>>>>> 61fc5ec5249fb9f6f47d825ee6f6a6190f640e32
       
         if ( !$instance)
             return new Response("Error");
@@ -503,6 +495,37 @@ class MainController extends AbstractController
 
               
         return new Response($this->getUser()->getWebPersonal());
+    }
+
+    /**
+     * @Route("/changeplataformasjuego", name="changeplataformasjuego", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changePlataformasJuego(Request $request)
+    { 
+        $consolaSobremesa = $request->query->get('consolaSobremesa');
+        $consolaPortatil = $request->query->get('consolaPortatil');
+        $movil = $request->query->get('movil');
+        $pcGaming = $request->query->get('pcGaming');
+        $simulador = $request->query->get('simulador');
+        $arcade = $request->query->get('arcade');
+        $vr = $request->query->get('vr');
+        $icloud = $request->query->get('icloud');
+        $otros = $request->query->get('otros');
+        $instance = array($consolaSobremesa,$consolaPortatil,$movil,$pcGaming,$simulador,$arcade,$vr,$icloud,$otros);
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setPlataformasJuego($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getPlataformasJuego());
     }
 
     /**

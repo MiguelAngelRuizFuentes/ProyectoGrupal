@@ -539,6 +539,47 @@ $(document).ready(function() {
         changeWebPersonal($(this).siblings("input[type='text']").val());
     });
 
+    //CAMBIAR PLATAFORMAS JUEGO
+    function changePlataformasJuego(consolaSobremesa, consolaPortatil, movil, pcGaming, simulador, arcade, vr, icloud, otros) {
+        $.ajax({
+            type: "GET",
+            url: "/changeplataformasjuego",
+            data: { 
+                consolaSobremesa: consolaSobremesa,
+                consolaPortatil: consolaPortatil,
+                movil: movil,
+                pcGaming: pcGaming,
+                simulador: simulador,
+                arcade: arcade,
+                vr: vr,
+                icloud: icloud,
+                otros: otros
+            },
+
+            // ------v-------use it as the callback function
+            success: function(data) {
+                console.log(data);
+                window.location.reload();
+            },
+            error: function(request, error) {
+                console.log(request, error);
+            }
+        });        
+    }
+
+    $("#plataformas .mostrar button").on("click",function(){
+        var consolaSobremesa = $(this).siblings("input[name='consolaSobremesa']").is(":checked") ? $(this).siblings("input[name='consolaSobremesa']").val() : null;
+        var consolaPortatil = $(this).siblings("input[name='consolaPortatil']").is(":checked") ? $(this).siblings("input[name='consolaPortatil']").val() : null;
+        var movil = $(this).siblings("input[name='movil']").is(":checked") ? $(this).siblings("input[name='movil']").val() : null;
+        var pcGaming = $(this).siblings("input[name='pcGaming']").is(":checked") ? $(this).siblings("input[name='pcGaming']").val() : null;
+        var simulador = $(this).siblings("input[name='simulador']").is(":checked") ? $(this).siblings("input[name='simulador']").val() : null;
+        var arcade = $(this).siblings("input[name='arcade']").is(":checked") ? $(this).siblings("input[name='arcade']").val() : null;
+        var vr = $(this).siblings("input[name='vr']").is(":checked") ? $(this).siblings("input[name='vr']").val() : null;
+        var icloud = $(this).siblings("input[name='icloud']").is(":checked") ? $(this).siblings("input[name='icloud']").val() : null;
+        var otros = $(this).siblings("input[name='otros']").is(":checked") ? $(this).siblings("input[name='otros']").val() : null;
+        changePlataformasJuego(consolaSobremesa, consolaPortatil, movil, pcGaming, simulador, arcade, vr, icloud, otros);
+    });
+
     //CAMBIAR NOMBRE JUGADOR
     function changeNombreJugador(name) {
         $.ajax({
