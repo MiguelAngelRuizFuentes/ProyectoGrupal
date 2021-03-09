@@ -70,7 +70,7 @@ class VentajaController extends AbstractController
             $entityManager->persist($ventaja);
             $entityManager->flush();
 
-            return $this->redirectToRoute('ventaja_index');
+            return $this->redirectToRoute('verVentajas');
         }
 
         return $this->render('ventaja/new.html.twig', [

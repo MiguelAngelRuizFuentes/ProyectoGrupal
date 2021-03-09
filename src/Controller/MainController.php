@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Ventaja;
+use App\Entity\Mision;
 use App\Entity\Evento;
 use App\Entity\Noticia;
 use App\Entity\User;
@@ -123,7 +125,19 @@ class MainController extends AbstractController
         return new Response($verificado);
     }
 
-     /**
+    /**
+     * @Route("/verVentajas", name="verVentajas")
+     */
+    public function verVentajas(): Response
+    {
+        $ventajas = $this->getDoctrine()->getRepository(Ventaja::class)->findAll();
+        return $this->render('main/ventajas.html.twig', [
+            'controller_name' => 'MainController',
+            'ventajas' => $ventajas
+        ]);
+    }
+
+    /**
      * @Route("/verEventos", name="verEventos")
      */
     public function verEventos(): Response
@@ -247,16 +261,15 @@ class MainController extends AbstractController
     public function changeFechaNacimiento(Request $request)
     { 
         $date = $request->query->get('newFechaNacimiento');
-        $instance = date($date);
       
         if ( !$instance)
             return new Response("Error");
 
         //modificamos los datos que queramos de la $instance y la guardamos
-        $this->getUser()->setFechaNacimiento($instance);
+        $this->getUser()->setFechaNacimiento($date);
 
         $em = $this->getDoctrine()->getManager();
-        //$em->persist($instance);
+        $em->persist($instance);
         $em->flush();
 
               

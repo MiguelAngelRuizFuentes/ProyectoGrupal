@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+{% if is_granted("ROLE_USER") %}
+
+    {% for ventaja in ventajas %}
+        Autor: {{ventaja.autor.nombre}}
+        <br>
+        Título: {{ventaja.titulo}}
+        <br>
+        Nombre empresa: {{ventaja.nombreEmpresa}}
+        <br>
+        Descripción: {{ventaja.descripcion}}
+        <br>
+        Imagen: <img src="/img/{{ ventaja.imagen }}" />
+        <br>
+        Enlace: {{ ventaja.enlace }}
+        <br>
+        Código descuento: {{ ventaja.codigoDescuento }}
+        <br>
+    {% endfor %}
+
+    {% if is_granted("ROLE_ADMIN") %}
+        <button><a href="/ventaja/new">Crear ventajas</a></button> <br/>
+    {% endif %}
+{% endif %}
+
+{% endblock %}
