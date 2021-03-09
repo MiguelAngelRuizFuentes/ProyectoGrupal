@@ -123,7 +123,6 @@ class MainController extends AbstractController
         return new Response($verificado);
     }
 
-<<<<<<< HEAD
      /**
      * @Route("/verEventos", name="verEventos")
      */
@@ -153,8 +152,6 @@ class MainController extends AbstractController
         return new Response($verificarEvento);
     }
 
-
-=======
     /**
      * @Route("/changename", name="changename", methods={"GET"})
      * @IsGranted("ROLE_USER")
@@ -265,5 +262,5 @@ class MainController extends AbstractController
               
         return new Response($this->getUser()->getFechaNacimiento()->format('Y-m-d'));
     }
->>>>>>> 59b9dc53d78e998d0e9966689d3ec112b057cc44
+
 }
