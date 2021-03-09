@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+
+    <ul>
+        {% for evento in eventos %}
+            {% if evento.validado == false %}
+                <li>{{ evento.tipo }} - <img src="/img/{{ evento.imagenEvento }}" width="500px" height="500px" /> 
+                <button id="{{ evento.id }}" onClick="verificarEvento({{ evento.id }});">Verificar Evento</button></li>
+                <li></li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+
+    <script>
+        function verificarEvento(id) {
+
+            function fail(data) {
+                alert("Error de AJAX: " + data + " - Perfil sin verificar por fallo.");
+            }
+
+            $.ajax({
+                type: "GET",
+                url: "/verificarNew",
+                data: {id_evento: id},
+                success: function(data) {
+                    alert("Evento verificado");
+                    if(data == 1) {
+                        var verificado = "#" + id;
+                        $(verificado).parent().remove();
+                    }
+                },
+                error: fail
+            });
+        }
+    </script>
+
+{% endblock %}

@@ -14,8 +14,6 @@ class EventoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('validado')
-            ->add('destacado')
             ->add('tipo')
             ->add('descripcion')
             ->add('enlace')

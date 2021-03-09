@@ -12,6 +12,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+
 
 /**
  * @Route("/evento")
@@ -30,9 +32,12 @@ class EventoController extends AbstractController
 
     /**
      * @Route("/new", name="evento_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_USER")
      */
     public function new(Request $request, SluggerInterface $slugger): Response
-    {
+    {   
+
+        
         $evento = new Evento();
         $fecha = new \DateTime();
         $form = $this->createForm(EventoType::class, $evento);
@@ -68,6 +73,8 @@ class EventoController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $evento->setOrganizador($this->getUser());
             $evento->setFechaHoraComienzo($fecha);
+            $evento->setValidado(FALSE);
+            $evento->setDestacado(FALSE);
             $entityManager->persist($evento);
             $entityManager->flush();
 

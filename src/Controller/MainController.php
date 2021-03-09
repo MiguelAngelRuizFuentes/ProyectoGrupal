@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Evento;
+use App\Entity\Noticia;
 use App\Entity\User;
 use App\Form\DniVerificadorType;
 use Symfony\Component\HttpFoundation\Request;
@@ -120,4 +122,35 @@ class MainController extends AbstractController
 
         return new Response($verificado);
     }
+
+     /**
+     * @Route("/verEventos", name="verEventos")
+     */
+    public function verEventos(): Response
+    {
+        $eventos = $this->getDoctrine()->getRepository(Evento::class)->findAll();
+        return $this->render('main/eventos.html.twig', [
+            'controller_name' => 'MainController',
+            'eventos' => $eventos
+        ]);
+    }
+
+    /**
+     * @Route("/verificarNew", name="verificarNew")
+     */
+    public function verificarNew(Request $request): Response
+    {
+        $evento = $this->getDoctrine()->getRepository(Evento::class)->find($request->query->get('id_evento'));
+        $entityManager = $this->getDoctrine()->getManager();
+        $verificarEvento = 1;
+
+        $evento->setValidado(true);
+
+        $entityManager->persist($evento);
+        $entityManager->flush();
+
+        return new Response($verificarEvento);
+    }
+
+
 }
