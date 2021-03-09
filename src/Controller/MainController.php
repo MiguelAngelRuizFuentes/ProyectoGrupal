@@ -152,11 +152,6 @@ class MainController extends AbstractController
         return new Response($verificarEvento);
     }
 
-<<<<<<< HEAD
-
-     /**
-     * @Route("/verNoticias", name="verNoticias")
-=======
     /**
      * @Route("/changename", name="changename", methods={"GET"})
      * @IsGranted("ROLE_USER")
@@ -226,20 +221,40 @@ class MainController extends AbstractController
     /**
      * @Route("/changedni", name="changedni", methods={"GET"})
      * @IsGranted("ROLE_USER")
->>>>>>> 5d7a87d274c2703990f335e18b62df74d6c6b65d
      */
-    public function verNoticias(): Response
-    {
-        $noticias = $this->getDoctrine()->getRepository(Noticia::class)->findAll();
-        return $this->render('main/noticias.html.twig', [
-            'controller_name' => 'MainController',
-            'noticias' => $noticias
-        ]);
+    public function changeDni(Request $request)
+    { 
+        $instance = $request->query->get('newDni');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setDni($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getDni());
     }
 
+    /**
+     * @Route("/changefechanacimiento", name="changefechanacimiento", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeFechaNacimiento(Request $request)
+    { 
+        $date = $request->query->get('newFechaNacimiento');
+        $instance = date($date);
+      
+        if ( !$instance)
+            return new Response("Error");
 
-<<<<<<< HEAD
-=======
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setFechaNacimiento($instance);
+
         $em = $this->getDoctrine()->getManager();
         //$em->persist($instance);
         $em->flush();
@@ -248,5 +263,4 @@ class MainController extends AbstractController
         return new Response($this->getUser()->getFechaNacimiento()->format('Y-m-d'));
     }
 
->>>>>>> 5d7a87d274c2703990f335e18b62df74d6c6b65d
 }
