@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Ventaja;
+use App\Entity\Mision;
 use App\Entity\Evento;
 use App\Entity\Noticia;
 use App\Entity\User;
@@ -121,6 +123,18 @@ class MainController extends AbstractController
         $entityManager->flush();
 
         return new Response($verificado);
+    }
+
+    /**
+     * @Route("/verVentajas", name="verVentajas")
+     */
+    public function verVentajas(): Response
+    {
+        $ventajas = $this->getDoctrine()->getRepository(Ventaja::class)->findAll();
+        return $this->render('main/ventajas.html.twig', [
+            'controller_name' => 'MainController',
+            'ventajas' => $ventajas
+        ]);
     }
 
      /**
