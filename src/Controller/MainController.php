@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Mision;
+use App\Entity\Ventaja;
 use App\Entity\Evento;
 use App\Entity\Noticia;
 use App\Entity\User;
