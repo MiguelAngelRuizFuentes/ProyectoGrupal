@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+    <table class="table table-striped">
+        <tbody>
+            <p>Noticias</p>
+
+            {% for noticia in noticias %}
+                <p>----------------------------------</p>
+                <h2>{{ noticia.titulo }}</h2>
+                
+            {% endfor %} 
+            
+        </tbody>
+    </table>
+
+
+{% endblock %}

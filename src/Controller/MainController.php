@@ -123,7 +123,6 @@ class MainController extends AbstractController
         return new Response($verificado);
     }
 
-<<<<<<< HEAD
      /**
      * @Route("/verEventos", name="verEventos")
      */
@@ -154,116 +153,17 @@ class MainController extends AbstractController
     }
 
 
-=======
-    /**
-     * @Route("/changename", name="changename", methods={"GET"})
-     * @IsGranted("ROLE_USER")
+     /**
+     * @Route("/verNoticias", name="verNoticias")
      */
-    public function changeName(Request $request)
-    { 
-        $instance = $request->query->get('newName');
-      
-        if ( !$instance)
-            return new Response("Error");
-
-        //modificamos los datos que queramos de la $instance y la guardamos
-        $this->getUser()->setNombre($instance);
-
-        $em = $this->getDoctrine()->getManager();
-        //$em->persist($instance);
-        $em->flush();
-
-            
-        return new Response($this->getUser()->getNombre());
+    public function verNoticias(): Response
+    {
+        $noticias = $this->getDoctrine()->getRepository(Noticia::class)->findAll();
+        return $this->render('main/noticias.html.twig', [
+            'controller_name' => 'MainController',
+            'noticias' => $noticias
+        ]);
     }
 
-    /**
-     * @Route("/changeapellido1", name="changeapellido1", methods={"GET"})
-     * @IsGranted("ROLE_USER")
-     */
-    public function changeApellido1(Request $request)
-    { 
-        $instance = $request->query->get('newApellido1');
-      
-        if ( !$instance)
-            return new Response("Error");
 
-        //modificamos los datos que queramos de la $instance y la guardamos
-        $this->getUser()->setApellido1($instance);
-
-        $em = $this->getDoctrine()->getManager();
-        //$em->persist($instance);
-        $em->flush();
-
-              
-        return new Response($this->getUser()->getApellido1());
-    }
-
-    /**
-     * @Route("/changeapellido2", name="changeapellido2", methods={"GET"})
-     * @IsGranted("ROLE_USER")
-     */
-    public function changeApellido2(Request $request)
-    { 
-        $instance = $request->query->get('newApellido2');
-      
-        if ( !$instance)
-            return new Response("Error");
-
-        //modificamos los datos que queramos de la $instance y la guardamos
-        $this->getUser()->setApellido2($instance);
-
-        $em = $this->getDoctrine()->getManager();
-        //$em->persist($instance);
-        $em->flush();
-
-              
-        return new Response($this->getUser()->getApellido2());
-    }
-
-    /**
-     * @Route("/changedni", name="changedni", methods={"GET"})
-     * @IsGranted("ROLE_USER")
-     */
-    public function changeDni(Request $request)
-    { 
-        $instance = $request->query->get('newDni');
-      
-        if ( !$instance)
-            return new Response("Error");
-
-        //modificamos los datos que queramos de la $instance y la guardamos
-        $this->getUser()->setDni($instance);
-
-        $em = $this->getDoctrine()->getManager();
-        //$em->persist($instance);
-        $em->flush();
-
-              
-        return new Response($this->getUser()->getDni());
-    }
-
-    /**
-     * @Route("/changefechanacimiento", name="changefechanacimiento", methods={"GET"})
-     * @IsGranted("ROLE_USER")
-     */
-    public function changeFechaNacimiento(Request $request)
-    { 
-        $date = $request->query->get('newFechaNacimiento');
-        $instance = date($date);
-      
-        if ( !$instance)
-            return new Response("Error");
-
-        //modificamos los datos que queramos de la $instance y la guardamos
-        $this->getUser()->setFechaNacimiento($instance);
-
-        $em = $this->getDoctrine()->getManager();
-        //$em->persist($instance);
-        $em->flush();
-
-              
-        return new Response($this->getUser()->getFechaNacimiento()->format('Y-m-d'));
-    }
->>>>>>> 59b9dc53d78e998d0e9966689d3ec112b057cc44
 }
