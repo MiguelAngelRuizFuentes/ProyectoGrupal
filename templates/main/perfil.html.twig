@@ -74,7 +74,7 @@
 <div id="fechaNacimiento">
     <h3>Fecha de nacimiento: </h3>
     {% if app.user.fechaNacimiento != null %}
-        <p>{{app.user.fechaNacimiento}}</p>
+        <p>{{app.user.fechaNacimiento|date("Y-m-d")}}</p>
     {% else %}
         <p>No ha introducido su fecha de nacimiento</p>
     {% endif %}
