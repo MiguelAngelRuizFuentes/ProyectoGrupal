@@ -2,8 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Ventaja;
-use App\Entity\Mision;
 use App\Entity\Evento;
 use App\Entity\Noticia;
 use App\Entity\User;
@@ -548,6 +546,37 @@ class MainController extends AbstractController
 
               
         return new Response($this->getUser()->getWebPersonal());
+    }
+
+    /**
+     * @Route("/changeplataformasjuego", name="changeplataformasjuego", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changePlataformasJuego(Request $request)
+    { 
+        $consolaSobremesa = $request->query->get('consolaSobremesa');
+        $consolaPortatil = $request->query->get('consolaPortatil');
+        $movil = $request->query->get('movil');
+        $pcGaming = $request->query->get('pcGaming');
+        $simulador = $request->query->get('simulador');
+        $arcade = $request->query->get('arcade');
+        $vr = $request->query->get('vr');
+        $icloud = $request->query->get('icloud');
+        $otros = $request->query->get('otros');
+        $instance = array($consolaSobremesa,$consolaPortatil,$movil,$pcGaming,$simulador,$arcade,$vr,$icloud,$otros);
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setPlataformasJuego($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getPlataformasJuego());
     }
 
     /**

@@ -8,12 +8,16 @@
     <button><a href="/perfil">Verificar perfil con datos y modificadación de datos del perfil</a></button>
     <br/>
     <button><a href="/verificarDniAdmin">Verificar perfil con DNI</a></button>  <br/>
+    <button><a href="/noticia/new">Crear Noticias</a></button><br/>
+    <button><a href="/evento/new">Crear Evento</a></button><br/>
     <button><a href="/verNoticias">Ver noticias</a></button><br/>
     <button><a href="/verVentajas">Ver ventajas</a></button><br/>
     <button><a href="/verMisiones">Ver misiones completadas</a></button><br/>
     <br/>
     Puntos de usuario: {{ puntos }}
     <br/>
+
+
     {% if is_granted("ROLE_ADMIN") %}
         <br/>
         <button><a href="/misionesCompletadas">Verificar misiones completadas</a></button> <br/>

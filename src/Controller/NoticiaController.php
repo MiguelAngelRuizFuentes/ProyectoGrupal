@@ -73,7 +73,7 @@ class NoticiaController extends AbstractController
             $entityManager->persist($noticium);
             $entityManager->flush();
 
-            return $this->redirectToRoute('noticia_index');
+            return $this->redirectToRoute('verNoticias');
         }
 
         return $this->render('noticia/new.html.twig', [

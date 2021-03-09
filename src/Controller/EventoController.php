@@ -78,7 +78,7 @@ class EventoController extends AbstractController
             $entityManager->persist($evento);
             $entityManager->flush();
 
-            return $this->redirectToRoute('evento_index');
+            return $this->redirectToRoute('main');
         }
 
         return $this->render('evento/new.html.twig', [
