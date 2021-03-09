@@ -123,6 +123,21 @@ class MainController extends AbstractController
         return new Response($verificado);
     }
 
+<<<<<<< HEAD
+=======
+    /**
+     * @Route("/verVentajas", name="verVentajas")
+     */
+    public function verVentajas(): Response
+    {
+        $ventajas = $this->getDoctrine()->getRepository(Ventaja::class)->findAll();
+        return $this->render('main/ventajas.html.twig', [
+            'controller_name' => 'MainController',
+            'ventajas' => $ventajas
+        ]);
+    }
+
+>>>>>>> 61fc5ec5249fb9f6f47d825ee6f6a6190f640e32
      /**
      * @Route("/verEventos", name="verEventos")
      */
@@ -158,7 +173,7 @@ class MainController extends AbstractController
      */
     public function changeName(Request $request)
     { 
-        $instance = $request->query->get('newName');
+        $instance = $request->query->get('new');
       
         if ( !$instance)
             return new Response("Error");
@@ -180,7 +195,7 @@ class MainController extends AbstractController
      */
     public function changeApellido1(Request $request)
     { 
-        $instance = $request->query->get('newApellido1');
+        $instance = $request->query->get('new');
       
         if ( !$instance)
             return new Response("Error");
@@ -202,7 +217,7 @@ class MainController extends AbstractController
      */
     public function changeApellido2(Request $request)
     { 
-        $instance = $request->query->get('newApellido2');
+        $instance = $request->query->get('new');
       
         if ( !$instance)
             return new Response("Error");
@@ -224,7 +239,7 @@ class MainController extends AbstractController
      */
     public function changeDni(Request $request)
     { 
-        $instance = $request->query->get('newDni');
+        $instance = $request->query->get('new');
       
         if ( !$instance)
             return new Response("Error");
@@ -246,8 +261,15 @@ class MainController extends AbstractController
      */
     public function changeFechaNacimiento(Request $request)
     { 
+<<<<<<< HEAD
         $date = $request->query->get('newFechaNacimiento');
         $instance = date($date);
+=======
+        $date = $request->query->get('new');
+        $instance = new \DateTime($date);
+        //var_dump($instance);
+        //exit;
+>>>>>>> 61fc5ec5249fb9f6f47d825ee6f6a6190f640e32
       
         if ( !$instance)
             return new Response("Error");
@@ -263,17 +285,246 @@ class MainController extends AbstractController
         return new Response($this->getUser()->getFechaNacimiento()->format('Y-m-d'));
     }
 
+    /**
+     * @Route("/changegenero", name="changegenero", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeGenero(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setGenero($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getGenero());
+    }
 
     /**
-     * @Route("/verNoticias", name="verNoticias")
+     * @Route("/changecalle", name="changecalle", methods={"GET"})
+     * @IsGranted("ROLE_USER")
      */
-    public function verNoticias(): Response
-    {
-        $noticias = $this->getDoctrine()->getRepository(Noticia::class)->findAll();
-        return $this->render('main/noticias.html.twig', [
-            'controller_name' => 'MainController',
-            'noticias' => $noticias
-        ]);
+    public function changeCalle(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setCalle($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getCalle());
+    }
+
+    /**
+     * @Route("/changenumerodireccion", name="changenumerodireccion", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeNumeroDireccion(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setNumeroDireccion($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getNumeroDireccion());
+    }
+
+    /**
+     * @Route("/changeescalerapiso", name="changeescalerapiso", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeEscaleraPiso(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setEscaleraPiso($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getEscaleraPiso());
+    }
+
+    /**
+     * @Route("/changemunicipio", name="changemunicipio", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeMunicipio(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setMunicipio($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getMunicipio());
+    }
+
+    /**
+     * @Route("/changeprovincia", name="changeprovincia", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeProvincia(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setProvincia($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getProvincia());
+    }
+
+    /**
+     * @Route("/changecodigopostal", name="changecodigopostal", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeCodigoPostal(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setCodigoPostal($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getCodigoPostal());
+    }
+
+    /**
+     * @Route("/changetelefonomovil", name="changetelefonomovil", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeTelefonoMovil(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setTelefonoMovil($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getTelefonoMovil());
+    }
+
+    /**
+     * @Route("/changetelefonofijo", name="changetelefonofijo", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeTelefonoFijo(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setTelefonoFijo($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getTelefonoFijo());
+    }
+
+    /**
+     * @Route("/changewebpersonal", name="changewebpersonal", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeWebPersonal(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setWebPersonal($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getWebPersonal());
+    }
+
+    /**
+     * @Route("/changenombrejugador", name="changenombrejugador", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeNombreJugador(Request $request)
+    { 
+        $instance = $request->query->get('new');
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setNombreJugador($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getNombreJugador());
     }
 
 }
