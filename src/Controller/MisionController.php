@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 /**
  * @Route("/mision")
@@ -27,6 +28,7 @@ class MisionController extends AbstractController
 
     /**
      * @Route("/new", name="mision_new", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function new(Request $request): Response
     {
@@ -36,10 +38,12 @@ class MisionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $mision->setCompletada(false);
+            $mision->setAutor($this->getUser());
             $entityManager->persist($mision);
             $entityManager->flush();
 
-            return $this->redirectToRoute('mision_index');
+            return $this->redirectToRoute('verMisiones');
         }
 
         return $this->render('mision/new.html.twig', [

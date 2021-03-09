@@ -25,8 +25,16 @@ class MainController extends AbstractController
      */
     public function index(): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         return $this->render('main/index.html.twig', [
             'controller_name' => 'MainController',
+            'puntos' => $puntos
         ]);
     }
 
@@ -135,6 +143,49 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
             'ventajas' => $ventajas
         ]);
+    }
+
+    /**
+     * @Route("/verMisiones", name="verMisiones")
+     */
+    public function verMisiones(): Response
+    {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        return $this->render('main/misiones.html.twig', [
+            'controller_name' => 'MainController',
+            'misiones' => $misiones
+        ]);
+    }
+
+    /**
+     * @Route("/misionesCompletadas", name="misionesCompletadas")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function misionesCompletadas(): Response
+    {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findAll();
+        return $this->render('main/misionesVerificar.html.twig', [
+            'controller_name' => 'MainController',
+            'misiones' => $misiones
+        ]);
+    }
+
+    /**
+     * @Route("/completarMision", name="completarMision")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function completarMision(Request $request): Response
+    {
+        $mision = $this->getDoctrine()->getRepository(Mision::class)->find($request->query->get('id_mision'));
+        $entityManager = $this->getDoctrine()->getManager();
+        $completada = 'completada';
+
+        $mision->setCompletada(true);
+
+        $entityManager->persist($mision);
+        $entityManager->flush();
+
+        return new Response($completada);
     }
 
      /**

@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+{% if is_granted("ROLE_USER") %}
+
+    {% for mision in misiones %}
+        Autor: {{mision.autor.nombre}}
+        <br>
+        Título: {{mision.titulo}}
+        <br>
+        Descripción: {{mision.descripcion}}
+        <br>
+        Puntos: {{ mision.puntos }}
+        <br>
+        {% if mision.completada == true %}
+            Mision completada.
+        {% else %}
+            Mision sin completar.
+        {% endif %}
+        <br>
+        <br>
+    {% endfor %}
+
+    {% if is_granted("ROLE_ADMIN") %}
+        <button><a href="/mision/new">Crear mision</a></button> <br/>
+    {% endif %}
+{% endif %}
+
+{% endblock %}

@@ -15,9 +15,7 @@ class MisionType extends AbstractType
             ->add('titulo')
             ->add('descripcion')
             ->add('puntos')
-            ->add('completada')
             ->add('usuario')
-            ->add('autor')
         ;
     }
 
