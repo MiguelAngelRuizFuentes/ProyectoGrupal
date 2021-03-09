@@ -11,6 +11,10 @@
             {% for noticia in noticias %}
                 <p>----------------------------------</p>
                 <h2>{{ noticia.titulo }}</h2>
+                <h4>{{ noticia.textoNoticia }}</h4>
+                <h3>{{ noticia.fechaPublicacion|date('Y-m-d') }}</h3>
+                <h3>{{ noticia.autorNoticia }}</h3>
+                <img src="img/{{noticia.imagenDestacada}}">
                 
             {% endfor %} 
             
