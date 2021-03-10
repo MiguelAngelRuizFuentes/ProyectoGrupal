@@ -185,11 +185,6 @@ class User implements UserInterface
     private $informes;
 
     /**
-     * @ORM\OneToMany(targetEntity=ListaCorreo::class, mappedBy="autor")
-     */
-    private $listaCorreos;
-
-    /**
      * @ORM\OneToMany(targetEntity=Noticia::class, mappedBy="autorNoticia")
      */
     private $noticias;
