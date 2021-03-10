@@ -580,6 +580,91 @@ $(document).ready(function() {
         changePlataformasJuego(consolaSobremesa, consolaPortatil, movil, pcGaming, simulador, arcade, vr, icloud, otros);
     });
 
+    //CAMBIAR TIPOS JUEGO
+    function changeTiposJuego(moba, shooter, deportivo, accion, aventuras, lucha, simulacion, plataformas, rpg, estrategia) {
+        $.ajax({
+            type: "GET",
+            url: "/changetiposjuego",
+            data: { 
+                moba: moba, 
+                shooter: shooter, 
+                deportivo: deportivo, 
+                accion: accion, 
+                aventuras: aventuras, 
+                lucha: lucha, 
+                simulacion: simulacion, 
+                plataformas: plataformas, 
+                rpg: rpg, 
+                estrategia: estrategia
+            },
+
+            // ------v-------use it as the callback function
+            success: function(data) {
+                console.log(data);
+                window.location.reload();
+            },
+            error: function(request, error) {
+                console.log(request, error);
+            }
+        });        
+    }
+
+    $("#tiposJuego .mostrar button").on("click",function(){
+        var moba = $(this).siblings("input[name='moba']").is(":checked") ? $(this).siblings("input[name='moba']").val() : null;
+        var shooter = $(this).siblings("input[name='shooter']").is(":checked") ? $(this).siblings("input[name='shooter']").val() : null;
+        var deportivo = $(this).siblings("input[name='deportivo']").is(":checked") ? $(this).siblings("input[name='deportivo']").val() : null;
+        var accion = $(this).siblings("input[name='accion']").is(":checked") ? $(this).siblings("input[name='accion']").val() : null;
+        var aventuras = $(this).siblings("input[name='aventuras']").is(":checked") ? $(this).siblings("input[name='aventuras']").val() : null;
+        var lucha = $(this).siblings("input[name='lucha']").is(":checked") ? $(this).siblings("input[name='lucha']").val() : null;
+        var simulacion = $(this).siblings("input[name='simulacion']").is(":checked") ? $(this).siblings("input[name='simulacion']").val() : null;
+        var plataformas = $(this).siblings("input[name='plataformas']").is(":checked") ? $(this).siblings("input[name='plataformas']").val() : null;
+        var rpg = $(this).siblings("input[name='rpg']").is(":checked") ? $(this).siblings("input[name='rpg']").val() : null;
+        var estrategia = $(this).siblings("input[name='estrategia']").is(":checked") ? $(this).siblings("input[name='estrategia']").val() : null;
+        changeTiposJuego(moba, shooter, deportivo, accion, aventuras, lucha, simulacion, plataformas, rpg, estrategia);
+    });
+
+    //CAMBIAR SOCIAL MEDIA
+    function changeSocialMedia(twitter, facebook, instagram, youtube, twitch, psn, steam, nintendo, epicgames) {
+        $.ajax({
+            type: "GET",
+            url: "/changesocialmedia",
+            data: { 
+                twitter: twitter, 
+                facebook: facebook, 
+                instagram: instagram, 
+                youtube: youtube, 
+                twitch: twitch, 
+                psn: psn, 
+                steam: steam, 
+                nintendo: nintendo, 
+                epicgames: epicgames   
+            },
+
+            // ------v-------use it as the callback function
+            success: function(data) {
+                console.log(data);
+                window.location.reload();
+            },
+            error: function(request, error) {
+                console.log(request, error);
+            }
+        });        
+    }
+
+    $("#socialMedia .mostrar button").on("click",function(){
+        var twitter = $(this).siblings("input[name='twitter']") != "" ? $(this).siblings("input[name='twitter']").val() : $(".twitter").text();
+        var facebook = $(this).siblings("input[name='facebook']") != "" ? $(this).siblings("input[name='facebook']").val() : $(".facebook").text();
+        var instagram = $(this).siblings("input[name='instagram']") != "" ? $(this).siblings("input[name='instagram']").val() : $(".instagram").text();
+        var youtube = $(this).siblings("input[name='youtube']") != "" ? $(this).siblings("input[name='youtube']").val() : $(".youtube").text();
+        var twitch = $(this).siblings("input[name='twitch']") != "" ? $(this).siblings("input[name='twitch']").val() : $(".twitch").text();
+        var psn = $(this).siblings("input[name='psn']") != "" ? $(this).siblings("input[name='psn']").val() : $(".psn").text();
+        console.log($(".psn").text());
+        var steam = $(this).siblings("input[name='steam']") != "" ? $(this).siblings("input[name='steam']").val() : $(".steam").text();
+        var nintendo = $(this).siblings("input[name='nintendo']") != "" ? $(this).siblings("input[name='nintendo']").val() : $(".nintendo").text();
+        var epicgames = $(this).siblings("input[name='epicgames']") != "" ? $(this).siblings("input[name='epicgames']").val() : $(".epicgames").text();
+        changeSocialMedia(twitter, facebook, instagram, youtube, twitch, psn, steam, nintendo, epicgames);
+    });
+
     //CAMBIAR NOMBRE JUGADOR
     function changeNombreJugador(name) {
         $.ajax({
@@ -600,6 +685,35 @@ $(document).ready(function() {
 
     $("#playerName .mostrar button").on("click",function(){
         changeNombreJugador($(this).siblings("input[type='text']").val());
+    });
+
+    //CAMBIAR ACEPTACIONES
+    function changeAceptaciones(almacenarDatos, comunicaciones, salud) {
+        $.ajax({
+            type: "GET",
+            url: "/changeaceptaciones",
+            data: { 
+                almacenarDatos: almacenarDatos,
+                comunicaciones: comunicaciones,
+                salud: salud
+            },
+
+            // ------v-------use it as the callback function
+            success: function(data) {
+                console.log(data);
+                window.location.reload();
+            },
+            error: function(request, error) {
+                console.log(request, error);
+            }
+        });        
+    }
+
+    $("#booleans .mostrar button").on("click",function(){
+        var almacenarDatos = $(this).siblings("input[name='almacenarDatos']").is(":checked");
+        var comunicaciones = $(this).siblings("input[name='comunicaciones']").is(":checked");
+        var salud = $(this).siblings("input[name='salud']").is(":checked");
+        changeAceptaciones(almacenarDatos, comunicaciones, salud);
     });
 
 });
