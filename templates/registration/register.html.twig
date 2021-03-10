@@ -7,15 +7,153 @@
         <div class="alert alert-danger" role="alert">{{ flashError }}</div>
     {% endfor %}
 
-    <h1>Register</h1>
+<style type="text/css">
+	.has-val.input100 + .focus-input100::after {
+  top: -22px;
+  font-size: 18px;
+}
 
-    {{ form_start(registrationForm) }}
+.has-val.input100 + .focus-input100::before {
+  width: 100%;
+}
+
+.has-val.input100 {
+  padding-left: 5px;
+}
+</style>
+
+    
+
+
+    {# {{ form_start(registrationForm) }}
+
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
+
+
+
+
+
         <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+
+
+    {{ form_end(registrationForm) }} #}
+
+
+<body>
+	
+	<div class="limiter">
+		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+			<div class="wrap-login100">
+            {{ form_start(registrationForm) }}
+				<form class="login100-form validate-form">
+					<span class="login100-form-logo">
+						<img src="images/Símbolo.png" class="imagendefondo">
+					</span>
+
+					<span class="login100-form-title p-b-34 p-t-27">
+						Register
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate = "Enter and Email">
+                       
+                        {{ form_row(registrationForm.email, { 'attr': {'class': 'input100','placeholder': 'Email'} }) }}
+                        <span class="focus-input100" data-placeholder="✉"></span>
+						
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+                        {{ form_row(registrationForm.plainPassword,{ 'attr': {'class': 'input100'} }) }} 
+						{# <input class="input100" type="password" name="pass" placeholder="Password"> #}
+						<span id="passw" class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+					<div class="wrap-input100 validate-input" data-validate="Enter password">
+						<input id="passwor" class="input100" type="password" name="pass" placeholder="Comfirm Password" required>
+						<span class="focus-input100" data-placeholder="&#xf191;" ></span>
+					</div>
+					
+					
+						{{ form_row(registrationForm.agreeTerms,{ 'attr': {'class': 'input-checkbox100'} } ) }}		
+								<label class="label-checkbox100" for="registration_form_agreeTerms">		
+							<li class="terminos">Acepto Los terminos y condiciones</li>
+							</label><br>
+
+						
+						
+					<br>
+						
+						
+
+							<input class="input-checkbox100" id="ckb2" type="checkbox" name="notificaciones">
+						<label class="label-checkbox100" for="ckb2">
+							Acepto Recibir notificaciones
+						</label><br>
+						
+						
+						
+					
+				
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn" type="submit">
+							Register
+						</button>
+					</div>
+
+					<div class="text-center p-t-90">
+
+					</div>
+				 </form>
+                {{ form_end(registrationForm) }}
+			</div>
+		</div>
+	</div>
+	
+
+	<div id="dropDownSelect1"></div>
+</body>
+<script type="text/javascript">
+
+
+	//Esta linea se dedica a quitar todos los labels molestos creados por symfony --jose luis 
+$(".required").hide();
+
+	//Estas dos lineas se dedican a colocar dos lineas de forma adecuada para que funcionen las animaciones de los emoticonos subiendo y bajanado --jose luis
+    $(".focus-input100:first").insertAfter("#registration_form_email");
+     $(".label-checkbox100:first").insertAfter("#registration_form_agreeTerms");
+   	 
+   	 $("#passw").insertAfter("#registration_form_plainPassword");
+
+
+   	 
+
+	$("button").click(function(e){
+			if ($("#passwor").val() == $("#registration_form_plainPassword").val()) {
+
+   	 	
+    }else{
+    	
+    	alert("Las contraseñas no coinciden, vuelve a intentarlo");
+    	e.preventDefault();
+    }
+
+    	    if ($("#registration_form_agreeTerms").is(':checked')) {
+     $(".terminos").css("color","white");
+    }else{
+    	$(".terminos").css("color","red");
+    }
+   
+
+
+		});
+   	 
+  
+   	
+    
+
+</script>
 {% endblock %}
