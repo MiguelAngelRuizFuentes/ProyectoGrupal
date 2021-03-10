@@ -740,4 +740,29 @@ class MainController extends AbstractController
         return new Response(implode(array($this->getUser()->getPermisoAlmacenarDatos(), $this->getUser()->getRecibirComunicacionesComerciales(), $this->getUser()->getRecomendacionesHabitosSaludables())));
     }
 
+    /**
+     * @Route("/verNoticias", name="verNoticias")
+     */
+    public function verNoticias(): Response
+    {
+        $noticias = $this->getDoctrine()->getRepository(Noticia::class)->findAll();
+        return $this->render('main/noticias.html.twig', [
+            'controller_name' => 'MainController',
+            'noticias' => $noticias
+        ]);
+    }
+
+     /**
+     * @Route("/calendario", name="calendario")
+     */
+    public function calendario(): Response
+    {
+        $eventos = $this->getDoctrine()->getRepository(Evento::class)->findAll();
+        return $this->render('main/calendario.html.twig', [
+            'controller_name' => 'MainController',
+            'evento' => $eventos
+        ]);
+    }
+
+
 }
