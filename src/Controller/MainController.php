@@ -73,10 +73,10 @@ class MainController extends AbstractController
         $response->headers->set('Content-Description','File Transfer');
         $response->headers->set('Content-Type', 'application/csv');
         $response->headers->set('Content-Disposition', 'attachment; filename='.$csv.'');
-        $response->headers->set('Cache-Control', 'no-cache private');
-        $response->headers->set('Pragma', 'no-cache');
+        $response->headers->set('Cache-Control', '');
+        $response->headers->set('Pragma', '');
         $response->headers->set('Expires', '0');
-        readfile(sfConfig::get('sf_upload_dir'). "/" . $csv);
+        readfile("../public/correos.csv");
         $response->sendHeaders();
         return $response;
 
