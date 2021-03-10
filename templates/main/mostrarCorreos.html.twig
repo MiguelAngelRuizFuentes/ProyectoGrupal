@@ -3,28 +3,24 @@
 {% block title %}Hello MainController!{% endblock %}
 
 {% block body %}
-
+Correos:
 {% for user in users %}
-    
+    <li>{{ user.email }}</li>
 {% endfor %}
+<button class="btn btn-primary" onClick="exportarCorreos();">Exportar correos</button>
 
 <script>
-    function misionCompleta(id) {
+    function exportarCorreos() {
 
         function fail(data) {
-            alert("Error de AJAX: " + data + " - Perfil sin verificar por fallo.");
+            alert("Exportar correos fallido.");
         }
 
         $.ajax({
             type: "GET",
-            url: "/completarMision",
-            data: {id_mision: id},
-            success: function(data) {
-                alert("Mision completada");
-                if(data == "completada") {
-                    var completada = "#" + id;
-                    $(completada).parent().remove();
-                }
+            url: "/exportar",
+            success: function() {
+                alert("Exportación completada");
             },
             error: fail
         });

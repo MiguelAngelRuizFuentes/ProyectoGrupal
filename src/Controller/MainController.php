@@ -52,6 +52,41 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/exportar", name="exportar")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function exportar(): Response
+    {
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+        $correos = [];
+        foreach($users as $user) {
+            array_push($correos, $user->getEmail());
+        }
+        // Código para crear archivo CSV:
+        $csv = 'correos.csv';
+        $file = fopen($csv, 'w');
+        foreach($correos as $correo){
+            fwrite($file, "$correo\n");
+        }
+        fclose($file);
+        $response = new Response($csv);
+        $response->headers->set('Content-Description','File Transfer');
+        $response->headers->set('Content-Type', 'application/csv');
+        $response->headers->set('Content-Disposition', 'attachment; filename='.$csv.'');
+        $response->headers->set('Cache-Control', 'no-cache private');
+        $response->headers->set('Pragma', 'no-cache');
+        $response->headers->set('Expires', '0');
+        readfile(sfConfig::get('sf_upload_dir'). "/" . $csv);
+        $response->sendHeaders();
+        return $response;
+
+        return $this->render('main/mostrarCorreos.html.twig', [
+            'controller_name' => 'MainController',
+            'users' => $users
+        ]);
+    }
+
+    /**
      * @Route("/perfil", name="perfil")
      * @IsGranted("ROLE_USER")
      */
