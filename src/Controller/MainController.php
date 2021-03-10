@@ -705,6 +705,9 @@ class MainController extends AbstractController
         return new Response(implode(array($this->getUser()->getPermisoAlmacenarDatos(), $this->getUser()->getRecibirComunicacionesComerciales(), $this->getUser()->getRecomendacionesHabitosSaludables())));
     }
 
+    /**
+     * @Route("/verNoticias", name="verNoticias")
+     */
     public function verNoticias(): Response
     {
         $noticias = $this->getDoctrine()->getRepository(Noticia::class)->findAll();
