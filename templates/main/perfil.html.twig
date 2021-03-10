@@ -234,15 +234,27 @@
     <a>Editar plataformas de juego</a>
     <div class="mostrar">
         <p>Seleccione sus plataformas de juego</p>
-        <input type="checkbox" name="consolaSobremesa" value="consolaSobremesa"> Consola sobremesa<br>
-        <input type="checkbox" name="consolaPortatil" value="consolaPortatil"> Consola portatil<br>
-        <input type="checkbox" name="movil" value="movil"> Móvil<br>
-        <input type="checkbox" name="pcGaming" value="pcGaming"> PC Gaming<br>
-        <input type="checkbox" name="simulador" value="simulador"> Simuladores<br>
-        <input type="checkbox" name="arcade" value="arcade"> Máquinas arcade<br>
-        <input type="checkbox" name="vr" value="vr"> VR/AR<br>
-        <input type="checkbox" name="icloud" value="icloud"> iCloud<br>
-        <input type="checkbox" name="otros" value="otros"> Otros<br>
+        {% if app.user.plataformasJuego != null %}
+            <input type="checkbox" name="consolaSobremesa" value="consolaSobremesa" {% if app.user.plataformasJuego[0] %} checked {% endif %}> Consola sobremesa<br>
+            <input type="checkbox" name="consolaPortatil" value="consolaPortatil" {% if app.user.plataformasJuego[1] %} checked {% endif %}> Consola portatil<br>
+            <input type="checkbox" name="movil" value="movil" {% if app.user.plataformasJuego[2] %} checked {% endif %}> Móvil<br>
+            <input type="checkbox" name="pcGaming" value="pcGaming" {% if app.user.plataformasJuego[3] %} checked {% endif %}> PC Gaming<br>
+            <input type="checkbox" name="simulador" value="simulador" {% if app.user.plataformasJuego[4] %} checked {% endif %}> Simuladores<br>
+            <input type="checkbox" name="arcade" value="arcade" {% if app.user.plataformasJuego[5] %} checked {% endif %}> Máquinas arcade<br>
+            <input type="checkbox" name="vr" value="vr" {% if app.user.plataformasJuego[6] %} checked {% endif %}> VR/AR<br>
+            <input type="checkbox" name="icloud" value="icloud" {% if app.user.plataformasJuego[7] %} checked {% endif %}> iCloud<br>
+            <input type="checkbox" name="otros" value="otros" {% if app.user.plataformasJuego[8] %} checked {% endif %}> Otros<br>
+        {% else %}
+            <input type="checkbox" name="consolaSobremesa" value="consolaSobremesa"> Consola sobremesa<br>
+            <input type="checkbox" name="consolaPortatil" value="consolaPortatil"}> Consola portatil<br>
+            <input type="checkbox" name="movil" value="movil"> Móvil<br>
+            <input type="checkbox" name="pcGaming" value="pcGaming"> PC Gaming<br>
+            <input type="checkbox" name="simulador" value="simulador"> Simuladores<br>
+            <input type="checkbox" name="arcade" value="arcade"}> Máquinas arcade<br>
+            <input type="checkbox" name="vr" value="vr"> VR/AR<br>
+            <input type="checkbox" name="icloud" value="icloud"> iCloud<br>
+            <input type="checkbox" name="otros" value="otros"> Otros<br>
+        {% endif %}
         <button>Enviar</button><br>
     </div>
 </div>
@@ -252,16 +264,29 @@
     <a>Editar tipos de juego</a>
     <div class="mostrar">
         <p>Seleccione sus tipos de juego</p>
-        <input type="checkbox" name="moba" value="moba"> MOBA<br>
-        <input type="checkbox" name="shooter" value="shooter"> Shooter<br>
-        <input type="checkbox" name="deportivo" value="deportivo"> Deportivo<br>
-        <input type="checkbox" name="accion" value="accion"> Acción<br>
-        <input type="checkbox" name="aventuras" value="aventuras"> Aventuras<br>
-        <input type="checkbox" name="lucha" value="lucha"> Lucha<br>
-        <input type="checkbox" name="simulacion" value="simulacion"> Simulación<br>
-        <input type="checkbox" name="plataformas" value="plataformas"> Plataformas<br>
-        <input type="checkbox" name="rpg" value="rpg"> RPG<br>
-        <input type="checkbox" name="estrategia" value="estrategia"> Estrategia<br>
+        {% if app.user.tiposJuego != null %}
+            <input type="checkbox" name="moba" value="moba" {% if app.user.tiposJuego[0] %} checked {% endif %}> MOBA<br>
+            <input type="checkbox" name="shooter" value="shooter" {% if app.user.tiposJuego[1] %} checked {% endif %}> Shooter<br>
+            <input type="checkbox" name="deportivo" value="deportivo" {% if app.user.tiposJuego[2] %} checked {% endif %}> Deportivo<br>
+            <input type="checkbox" name="accion" value="accion" {% if app.user.tiposJuego[3] %} checked {% endif %}> Acción<br>
+            <input type="checkbox" name="aventuras" value="aventuras" {% if app.user.tiposJuego[4] %} checked {% endif %}> Aventuras<br>
+            <input type="checkbox" name="lucha" value="lucha" {% if app.user.tiposJuego[5] %} checked {% endif %}> Lucha<br>
+            <input type="checkbox" name="simulacion" value="simulacion" {% if app.user.tiposJuego[6] %} checked {% endif %}> Simulación<br>
+            <input type="checkbox" name="plataformas" value="plataformas" {% if app.user.tiposJuego[7] %} checked {% endif %}> Plataformas<br>
+            <input type="checkbox" name="rpg" value="rpg" {% if app.user.tiposJuego[8] %} checked {% endif %}> RPG<br>
+            <input type="checkbox" name="estrategia" value="estrategia" {% if app.user.tiposJuego[9] %} checked {% endif %}> Estrategia<br>
+        {% else %}
+            <input type="checkbox" name="moba" value="moba"> MOBA<br>
+            <input type="checkbox" name="shooter" value="shooter"> Shooter<br>
+            <input type="checkbox" name="deportivo" value="deportivo"> Deportivo<br>
+            <input type="checkbox" name="accion" value="accion"> Acción<br>
+            <input type="checkbox" name="aventuras" value="aventuras"> Aventuras<br>
+            <input type="checkbox" name="lucha" value="lucha"> Lucha<br>
+            <input type="checkbox" name="simulacion" value="simulacion" > Simulación<br>
+            <input type="checkbox" name="plataformas" value="plataformas"> Plataformas<br>
+            <input type="checkbox" name="rpg" value="rpg"> RPG<br>
+            <input type="checkbox" name="estrategia" value="estrategia"> Estrategia<br>
+        {% endif %}
         <button>Enviar</button><br>
     </div>
 </div>
@@ -271,15 +296,27 @@
     <a>Editar cuentas sociales</a>
     <div class="mostrar">
         <p>Seleccione sus cuentas sociales</p>
-        <input type="text" name="twitter" placeholder="Pon un enlace a tu cuenta"> Twitter<br>
-        <input type="text" name="facebook" placeholder="Pon un enlace a tu cuenta"> Facebook<br>
-        <input type="text" name="instagram" placeholder="Pon un enlace a tu cuenta"> Instagram<br>
-        <input type="text" name="youtube" placeholder="Pon un enlace a tu cuenta"> YouTube<br>
-        <input type="text" name="twitch" placeholder="Pon un enlace a tu cuenta"> Twitch<br>
-        <input type="text" name="psn" placeholder="Pon un enlace a tu cuenta"> PlayStationNetwork<br>
-        <input type="text" name="steam" placeholder="Pon un enlace a tu cuenta"> Steam<br>
-        <input type="text" name="nintendo" placeholder="Pon un enlace a tu cuenta"> Nintendo Network<br>
-        <input type="text" name="epicgames" placeholder="Pon un enlace a tu cuenta"> Epic Games<br>
+        {% if app.user.cuentasSociales != null %}
+            <input type="text" name="twitter" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[0] %}{{app.user.cuentasSociales[0]}}{% endif %}"> Twitter [<i>{% if app.user.cuentasSociales[0] %} {{app.user.cuentasSociales[0]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
+            <input type="text" name="facebook" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[1] %}{{app.user.cuentasSociales[1]}}{% endif %}"> Facebook [<i>{% if app.user.cuentasSociales[1] %} {{app.user.cuentasSociales[1]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
+            <input type="text" name="instagram" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[2] %}{{app.user.cuentasSociales[2]}}{% endif %}"> Instagram [<i>{% if app.user.cuentasSociales[2] %} {{app.user.cuentasSociales[2]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
+            <input type="text" name="youtube" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[3] %}{{app.user.cuentasSociales[3]}}{% endif %}"> YouTube [<i>{% if app.user.cuentasSociales[3] %} {{app.user.cuentasSociales[3]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
+            <input type="text" name="twitch" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[4] %}{{app.user.cuentasSociales[4]}}{% endif %}"> Twitch [<i>{% if app.user.cuentasSociales[4] %} {{app.user.cuentasSociales[4]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
+            <input type="text" name="psn" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[5] %}{{app.user.cuentasSociales[5]}}{% endif %}"> PlayStationNetwork [<i>{% if app.user.cuentasSociales[5] %} {{app.user.cuentasSociales[5]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
+            <input type="text" name="steam" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[6] %}{{app.user.cuentasSociales[6]}}{% endif %}"> Steam [<i>{% if app.user.cuentasSociales[6] %} {{app.user.cuentasSociales[6]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
+            <input type="text" name="nintendo" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[7] %}{{app.user.cuentasSociales[7]}}{% endif %}"> Nintendo Network [<i>{% if app.user.cuentasSociales[7] %} {{app.user.cuentasSociales[7]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
+            <input type="text" name="epicgames" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[8] %}{{app.user.cuentasSociales[8]}}{% endif %}"> Epic Games [<i>{% if app.user.cuentasSociales[8] %} {{app.user.cuentasSociales[8]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
+        {% else %}
+            <input type="text" name="twitter" placeholder="Pon tu nombre de usuario"> Twitter [<i>No has introducido tu nombre de usuario</i>]<br>
+            <input type="text" name="facebook" placeholder="Pon tu nombre de usuario"> Facebook [<i>No has introducido tu nombre de usuario</i>]<br>
+            <input type="text" name="instagram" placeholder="Pon tu nombre de usuario"> Instagram [<i>No has introducido tu nombre de usuario</i>]<br>
+            <input type="text" name="youtube" placeholder="Pon tu nombre de usuario"> YouTube [<i>No has introducido tu nombre de usuario</i>]<br>
+            <input type="text" name="twitch" placeholder="Pon tu nombre de usuario"> Twitch [<i>No has introducido tu nombre de usuario</i>]<br>
+            <input type="text" name="psn" placeholder="Pon tu nombre de usuario"> PlayStationNetwork [<i>No has introducido tu nombre de usuario</i>]<br>
+            <input type="text" name="steam" placeholder="Pon tu nombre de usuario"> Steam [<i>No has introducido tu nombre de usuario</i>]<br>
+            <input type="text" name="nintendo" placeholder="Pon tu nombre de usuario"> Nintendo Network [<i>No has introducido tu nombre de usuario</i>]<br>
+            <input type="text" name="epicgames" placeholder="Pon tu nombre de usuario"> Epic Games [<i>No has introducido tu nombre de usuario</i>]<br>
+        {% endif %}
         <button>Enviar</button><br>
     </div>
 </div>
@@ -303,10 +340,10 @@
     <a>Editar aceptaciones</a>
     <div class="mostrar">
         <p>Acepte las siguientes condiciones</p>
-        <input type="checkbox" name="privacidad" value="privacidad"> Política de privacidad.<br>
-        <input type="checkbox" name="almacenarDatos" value="almacenarDatos"> Permiso para almacenar datos.<br>
-        <input type="checkbox" name="comunicaciones" value="comunicaciones"> Aceptar recibir comunicaciones comerciales.<br>
-        <input type="checkbox" name="salud" value="salud"> Conozco las recomedaciones sobre hábitos saludables y me comprometo a seguir los valores éticos en el juego y competiciones en los que participe.<br>
+        <input type="checkbox" name="privacidad" value="privacidad" checked> Política de privacidad.<br>
+        <input type="checkbox" name="almacenarDatos" value="almacenarDatos" {% if app.user.permisoAlmacenarDatos == true %} checked {% endif %}> Permiso para almacenar datos.<br>
+        <input type="checkbox" name="comunicaciones" value="comunicaciones" {% if app.user.recibirComunicacionesComerciales == true %} checked {% endif %}> Aceptar recibir comunicaciones comerciales.<br>
+        <input type="checkbox" name="salud" value="salud" {% if app.user.recomendacionesHabitosSaludables == true %} checked {% endif %}> Conozco las recomedaciones sobre hábitos saludables y me comprometo a seguir los valores éticos en el juego y competiciones en los que participe.<br>
         <button>Enviar</button><br>
     </div>
 </div>

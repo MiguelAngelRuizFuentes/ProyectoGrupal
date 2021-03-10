@@ -582,6 +582,69 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/changetiposjuego", name="changetiposjuego", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeTiposJuego(Request $request)
+    { 
+        $moba = $request->query->get('moba');
+        $shooter = $request->query->get('shooter');
+        $deportivo = $request->query->get('deportivo');
+        $accion = $request->query->get('accion');
+        $aventuras = $request->query->get('aventuras');
+        $lucha = $request->query->get('lucha');
+        $simulacion = $request->query->get('simulacion');
+        $plataformas = $request->query->get('plataformas');
+        $rpg = $request->query->get('rpg');
+        $estrategia = $request->query->get('estrategia');
+        $instance = array($moba,$shooter,$deportivo,$accion,$aventuras,$lucha,$simulacion,$plataformas,$rpg,$estrategia);
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setTiposJuego($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response($this->getUser()->getTiposJuego());
+    }
+
+    /**
+     * @Route("/changesocialmedia", name="changesocialmedia", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeCuentasSociales(Request $request)
+    { 
+        $twitter = $request->query->get('twitter');
+        $facebook = $request->query->get('facebook');
+        $instagram = $request->query->get('instagram');
+        $youtube = $request->query->get('youtube');
+        $twitch = $request->query->get('twitch');
+        $psn = $request->query->get('psn');
+        $steam = $request->query->get('steam');
+        $nintendo = $request->query->get('nintendo');
+        $epicgames = $request->query->get('epicgames');
+        $instance = array($twitter,$facebook,$instagram,$youtube,$twitch,$psn,$steam,$nintendo,$epicgames);
+      
+        if ( !$instance)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setCuentasSociales($instance);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response(implode($this->getUser()->getCuentasSociales()));
+    }
+
+    /**
      * @Route("/changenombrejugador", name="changenombrejugador", methods={"GET"})
      * @IsGranted("ROLE_USER")
      */
@@ -601,6 +664,32 @@ class MainController extends AbstractController
 
               
         return new Response($this->getUser()->getNombreJugador());
+    }
+
+    /**
+     * @Route("/changeaceptaciones", name="changeaceptaciones", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function changeAceptaciones(Request $request)
+    { 
+        $almacenarDatos = $request->query->get('almacenarDatos');
+        $comunicaciones = $request->query->get('comunicaciones');
+        $salud = $request->query->get('salud');
+      
+        if ( !$almacenarDatos || !$comunicaciones || !$salud)
+            return new Response("Error");
+
+        //modificamos los datos que queramos de la $instance y la guardamos
+        $this->getUser()->setPermisoAlmacenarDatos($almacenarDatos);
+        $this->getUser()->setRecibirComunicacionesComerciales($comunicaciones);
+        $this->getUser()->setRecomendacionesHabitosSaludables($salud);
+
+        $em = $this->getDoctrine()->getManager();
+        //$em->persist($instance);
+        $em->flush();
+
+              
+        return new Response(implode(array($this->getUser()->getPermisoAlmacenarDatos(), $this->getUser()->getRecibirComunicacionesComerciales(), $this->getUser()->getRecomendacionesHabitosSaludables())));
     }
 
 }
