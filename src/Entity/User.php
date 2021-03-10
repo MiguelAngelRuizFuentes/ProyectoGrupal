@@ -744,28 +744,6 @@ class User implements UserInterface
         return $this->listaCorreos;
     }
 
-    public function addListaCorreo(ListaCorreo $listaCorreo): self
-    {
-        if (!$this->listaCorreos->contains($listaCorreo)) {
-            $this->listaCorreos[] = $listaCorreo;
-            $listaCorreo->setAutor($this);
-        }
-
-        return $this;
-    }
-
-    public function removeListaCorreo(ListaCorreo $listaCorreo): self
-    {
-        if ($this->listaCorreos->removeElement($listaCorreo)) {
-            // set the owning side to null (unless already changed)
-            if ($listaCorreo->getAutor() === $this) {
-                $listaCorreo->setAutor(null);
-            }
-        }
-
-        return $this;
-    }
-
     /**
      * @return Collection|Noticia[]
      */
