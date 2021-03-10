@@ -39,6 +39,19 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/mostrarCorreos", name="mostrarCorreos")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function mostrarCorreos(): Response
+    {
+        $users = $this->getDoctrine()->getRepository(User::class)->findAll();
+        return $this->render('main/mostrarCorreos.html.twig', [
+            'controller_name' => 'MainController',
+            'users' => $users
+        ]);
+    }
+
+    /**
      * @Route("/perfil", name="perfil")
      * @IsGranted("ROLE_USER")
      */

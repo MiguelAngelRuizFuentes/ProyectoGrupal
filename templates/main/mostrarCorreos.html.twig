@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello MainController!{% endblock %}
+
+{% block body %}
+
+{% for user in users %}
+    
+{% endfor %}
+
+<script>
+    function misionCompleta(id) {
+
+        function fail(data) {
+            alert("Error de AJAX: " + data + " - Perfil sin verificar por fallo.");
+        }
+
+        $.ajax({
+            type: "GET",
+            url: "/completarMision",
+            data: {id_mision: id},
+            success: function(data) {
+                alert("Mision completada");
+                if(data == "completada") {
+                    var completada = "#" + id;
+                    $(completada).parent().remove();
+                }
+            },
+            error: fail
+        });
+    }
+</script>
+{% endblock %}

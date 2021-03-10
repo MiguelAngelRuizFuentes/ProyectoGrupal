@@ -7,8 +7,10 @@
     <table class="table table-striped">
         <tbody>
             <p>Noticias</p>
+<div id="content">
 
             {% for noticia in noticias %}
+
                 <p>----------------------------------</p>
                 <h2>{{ noticia.titulo }}</h2>
                 <h4>{{ noticia.textoNoticia }}</h4>
@@ -17,6 +19,11 @@
                 <img src="img/{{noticia.imagenDestacada}}">
                 
             {% endfor %} 
+ 
+
+
+        </div>
+            
             
         </tbody>
     </table>

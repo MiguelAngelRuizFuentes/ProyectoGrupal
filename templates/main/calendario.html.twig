@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Titulo{% endblock %}</title>
+        
+        {% block stylesheets %}
+             <link href='fullcalendar/main.css' rel='stylesheet' />
+        {% endblock %}
+
+        {% block javascripts %}
+            <script src='fullcalendar/main.js'></script>
+        {% endblock %}
+
+        <style>
+        
+        html,body{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 14px;
+        }
+        #calendar{
+            max-width: 900px;
+            margin: 40px auto;
+        }
+
+        </style>
+
+        <script>
+
+            document.addEventListener('DOMContentLoaded', function() {
+                var calendarEl = document.getElementById('calendar');
+                var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth'
+                });
+                //cambiamos el idioma al español
+                calendar.setOption('locale','Es');
+
+                calendar.render();
+            });
+
+        </script>
+
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        <div id='calendar'></div>
+
+
+    </body>
+</html>
