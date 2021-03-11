@@ -7,15 +7,11 @@
 {% if is_granted("ROLE_USER") %}
 
     Puntos de usuario: {{ puntos }}
-    <br/>
+
 
 
     {% if is_granted("ROLE_ADMIN") %}
-        <br/>
-        <button><a href="/misionesCompletadas">Verificar misiones completadas</a></button> <br/>
-        <button><a href="/verEventos">Verificar Eventos</a></button> <br/>
-        <button><a href="/mostrarCorreos">Mostrar correos usuarios</a></button> <br/>
-        <button><a href="/verificarDniAdminFoto">Usuarios para verificar perfil con foto DNI</a></button>
+
     {% endif %}
 {% endif %}
 

@@ -4514,6 +4514,12 @@ readers do not read off random characters that represent icons */
 
 .fa-wrench:before {
   content: "\f0ad"; }
+  
+.fa-eye:before {
+    content: "\1F441"; }
+
+.fa-pencil:before {
+      content: "9999"; }
 
 .fa-x-ray:before {
   content: "\f497"; }

@@ -22,9 +22,13 @@ class MainController extends AbstractController
 {
     /**
      * @Route("/", name="main")
+     * @IsGranted("ROLE_ADMIN")
+     * @IsGranted("ROLE_USER")
      */
     public function index(): Response
     {
+        
+        
         $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
         $puntos = 0;
         foreach($misiones as $mision ) {
@@ -32,7 +36,7 @@ class MainController extends AbstractController
                 $puntos += $mision->getPuntos();
             }
         }
-        return $this->render('main/index.html.twig', [
+        return $this->render('Cabecera/cabecera.html.twig', [
             'controller_name' => 'MainController',
             'puntos' => $puntos
         ]);
