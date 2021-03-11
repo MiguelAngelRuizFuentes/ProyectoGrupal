@@ -18,6 +18,16 @@
         font-size:15px;
         
     }
+
+    #pie{
+        background: linear-gradient(to bottom, #00D2B3, #4C12A1);
+        
+        color:white;
+        font-weight:bolder; 
+        text-align:center;
+        border-top:solid black;
+    }
+
     </style>
  {% block stylesheets %}
     <!-- Custom fonts for this template-->
@@ -37,11 +47,11 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to bottom, #00D2B3, #4C12A1);">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to bottom, #00D2B3, #4C12A1); border-right:solid black">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
+                <div class="sidebar-brand-icon">
                     <img src="/images/Símbolo.png" class="cabesa"/>
                 </div>
                 <div class="sidebar-brand-text mx-3" style="font-size:x-small">Federacion Gamer Española </div>
@@ -180,7 +190,7 @@
         </div>
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-white" id="pie">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2020</span>
