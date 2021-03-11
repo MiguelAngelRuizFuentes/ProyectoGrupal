@@ -4208,7 +4208,7 @@ input[type="button"].btn-block {
   }
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 800.98px) {
   .navbar-expand-md > .container,
   .navbar-expand-md > .container-fluid, .navbar-expand-md > .container-sm, .navbar-expand-md > .container-md, .navbar-expand-md > .container-lg, .navbar-expand-md > .container-xl {
     padding-right: 0;
@@ -4216,11 +4216,19 @@ input[type="button"].btn-block {
   }
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 100px) {
   .navbar-expand-md {
     flex-flow: row nowrap;
     justify-content: flex-start;
-  }
+  } */
+
+  @media only screen and (min-width: 320px) and  (max-width: 800px) {
+    .navbar-expand-md {
+      flex-flow: row nowrap;
+      justify-content: flex-start;
+    }
+
+
   .navbar-expand-md .navbar-nav {
     flex-direction: row;
   }

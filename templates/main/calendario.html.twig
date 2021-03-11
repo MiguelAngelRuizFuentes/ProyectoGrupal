@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Calendario{% endblock %}</title>
+{% extends 'base.html.twig' %}
+       {% block title %}Calendario{% endblock %}
         
         {% block stylesheets %}
              <link href='fullcalendar/main.css' rel='stylesheet' />
@@ -13,7 +10,13 @@
             <script src='fullcalendar/main.js'></script>
         {% endblock %}
 
-        <style>
+
+
+
+   
+   
+        {% block body %}
+                <style>
         
         html,body{
             margin: 0;
@@ -28,6 +31,9 @@
 
         </style>
 
+        <div id='calendar'></div>
+
+        
         <script>
 
             document.addEventListener('DOMContentLoaded', function() {
@@ -51,13 +57,6 @@
             });
 
         </script>
-
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-
-        <div id='calendar'></div>
+{% endblock %}
 
 
-    </body>
-</html>
