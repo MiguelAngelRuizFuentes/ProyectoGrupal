@@ -1,22 +1,32 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}VerNoticias{% endblock %}
+{% block stylesheets %}
+    {# <link rel="stylesheets" href="/css/noticias.css"> #}
+{% endblock %}
 
 {% block body %}
 
     <table class="table table-striped">
         <tbody>
-            <p>Noticias</p>
+            {# <h1 style="color:white; 
+            padding:10px; 
+            font-weight:bolder; 
+            text-align:center; 
+            background-color:#4C12A1; 
+            border-bottom:solid black; 
+            background:#4C12A1 linear-gradient(90deg, #4C12A1 0%, #00D2B3 95%);">NOTICIAS</h1> #}
+            <h1 class="titulos">NOTICIAS</h1>
 <div id="content">
 
             {% for noticia in noticias %}
 
-                <p>----------------------------------</p>
-                <h2>{{ noticia.titulo }}</h2>
-                <h4>{{ noticia.textoNoticia }}</h4>
-                <h3>{{ noticia.fechaPublicacion|date('Y-m-d') }}</h3>
-                <h3>{{ noticia.autorNoticia }}</h3>
-                <img src="img/{{noticia.imagenDestacada}}">
+                
+                <h2 style="color:black; padding:10px">{{ noticia.titulo }}</h2>
+                <h4 style="color:black; padding:10px">{{ noticia.textoNoticia }}</h4>
+                <h3 style="color:black; padding:10px">{{ noticia.fechaPublicacion|date('Y-m-d') }}</h3>
+                <h3 style="color:black; padding:10px">{{ noticia.autorNoticia }}</h3>
+                <img src="img/{{noticia.imagenDestacada}}" height="350px" width="350px">
                 
             {% endfor %} 
  

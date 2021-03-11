@@ -8,6 +8,7 @@
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
         {% block stylesheets %}
+        
         {% endblock %}
         {% block javascripts %}
             {#{{ encore_entry_script_tags('app') }}#}
@@ -15,6 +16,18 @@
     </head>
 
     <body id="page-top">
+    <style>
+            .titulos{
+                color:white; 
+                padding:10px; 
+                font-weight:bolder; 
+                text-align:center; 
+                background-color:#4C12A1; 
+                border-bottom:solid black; 
+                background:#4C12A1 linear-gradient(90deg, #4C12A1 0%, #00D2B3 95%);
+            }
+            
+        </style>
      {% include "/Cabecera/cabecera.html.twig" %}
      <div class="contenido">
      
