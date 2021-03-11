@@ -18,9 +18,22 @@
         font-size:15px;
         
     }
+<<<<<<< HEAD
     .userinfo{
         padding:10px;
     }
+=======
+
+    #pie{
+        background: linear-gradient(to bottom, #00D2B3, #4C12A1);
+        
+        color:white;
+        font-weight:bolder; 
+        text-align:center;
+        border-top:solid black;
+    }
+
+>>>>>>> aae996a66484029b7ac4913812899904f1fcbd81
     </style>
  {% block stylesheets %}
     <!-- Custom fonts for this template-->
@@ -40,11 +53,11 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to bottom, #00D2B3, #4C12A1);">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to bottom, #00D2B3, #4C12A1); border-right:solid black">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
-                <div class="sidebar-brand-icon rotate-n-15">
+                <div class="sidebar-brand-icon ">
                     <img src="/images/Símbolo.png" class="cabesa"/>
                 </div>
                 <div class="sidebar-brand-text mx-3" style="font-size:x-small">Federacion Gamer Española </div>
@@ -56,12 +69,17 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
+<<<<<<< HEAD
             <div class="userinfo">
                 
                👤 <label style="color:black">{{ app.user.username }}</label>, <a href="{{ path('app_logout') }}">Logout</a>
             </div>
             <hr class="sidebar-divider">
             <div class="userinfo">
+=======
+            <li class="nav-item active">
+             {# Puntos de usuario: {{ puntos }} #}
+>>>>>>> aae996a66484029b7ac4913812899904f1fcbd81
                 {% if app.user %}
                 
                 Puntos de usuario: {{ puntos }}
@@ -187,7 +205,7 @@
         </div>
 
             <!-- Footer -->
-            <footer class="sticky-footer bg-white">
+            <footer class="sticky-footer bg-white" id="pie">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         <span>Copyright &copy; Your Website 2020</span>

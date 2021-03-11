@@ -28,6 +28,16 @@ a {
   }
 }
 
+.titulos{
+  color:white; 
+  padding:10px; 
+  font-weight:bolder; 
+  text-align:center; 
+  background-color:#4C12A1; 
+  border-bottom:solid black; 
+  background:#4C12A1 linear-gradient(90deg, #4C12A1 0%, #00D2B3 95%);
+}
+
 // Set container padding to match gutter width instead of default 15px
 .container,
 .container-fluid {
