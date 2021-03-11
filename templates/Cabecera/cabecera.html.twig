@@ -18,6 +18,9 @@
         font-size:15px;
         
     }
+    .userinfo{
+        padding:10px;
+    }
     </style>
  {% block stylesheets %}
     <!-- Custom fonts for this template-->
@@ -40,7 +43,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" style="background: linear-gradient(to bottom, #00D2B3, #4C12A1);">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon rotate-n-15">
                     <img src="/images/Símbolo.png" class="cabesa"/>
                 </div>
@@ -53,12 +56,16 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-             Puntos de usuario: {{ puntos }}
+            <div class="userinfo">
+                
+               👤 <label style="color:black">{{ app.user.username }}</label>, <a href="{{ path('app_logout') }}">Logout</a>
+            </div>
+            <hr class="sidebar-divider">
+            <div class="userinfo">
                 {% if app.user %}
-        <div class="mb-3">
-            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
-        </div>
+                
+                Puntos de usuario: {{ puntos }}
+         </div>
     {% endif %}
  
 
