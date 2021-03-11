@@ -79,21 +79,13 @@ class MainController extends AbstractController
             fwrite($file, "$correo\n");
         }
         fclose($file);
-        $response = new Response($csv);
-        $response->headers->set('Content-Description','File Transfer');
+        $f = fopen('../public/correos.csv', 'r');
+        $response = new Response(stream_get_contents($f));
         $response->headers->set('Content-Type', 'application/csv');
         $response->headers->set('Content-Disposition', 'attachment; filename='.$csv.'');
-        $response->headers->set('Cache-Control', '');
-        $response->headers->set('Pragma', '');
-        $response->headers->set('Expires', '0');
-        readfile("../public/correos.csv");
         $response->sendHeaders();
+        fclose($f);
         return $response;
-
-        return $this->render('main/mostrarCorreos.html.twig', [
-            'controller_name' => 'MainController',
-            'users' => $users
-        ]);
     }
 
     /**
