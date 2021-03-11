@@ -19,7 +19,7 @@ Correos:
         $.ajax({
             type: "GET",
             url: "/exportar",
-            success: function() {
+            success: function(data) {
                 alert("Exportación completada");
             },
             error: fail

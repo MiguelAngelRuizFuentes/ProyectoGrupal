@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Noticia;
+use App\Entity\Mision;
 use App\Form\NoticiaType;
 use App\Repository\NoticiaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -34,6 +35,13 @@ class NoticiaController extends AbstractController
      */
     public function new(Request $request, SluggerInterface $slugger): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $noticium = new Noticia();
         $fecha = new \DateTime();
         $form = $this->createForm(NoticiaType::class, $noticium);
@@ -79,6 +87,7 @@ class NoticiaController extends AbstractController
         return $this->render('noticia/new.html.twig', [
             'noticium' => $noticium,
             'form' => $form->createView(),
+            'puntos' => $puntos
         ]);
     }
 

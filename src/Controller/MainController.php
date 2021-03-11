@@ -27,8 +27,6 @@ class MainController extends AbstractController
      */
     public function index(): Response
     {
-        
-        
         $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
         $puntos = 0;
         foreach($misiones as $mision ) {
@@ -48,10 +46,18 @@ class MainController extends AbstractController
      */
     public function mostrarCorreos(): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
         return $this->render('main/mostrarCorreos.html.twig', [
             'controller_name' => 'MainController',
-            'users' => $users
+            'users' => $users,
+            'puntos' => $puntos
         ]);
     }
 
@@ -96,8 +102,16 @@ class MainController extends AbstractController
      */
     public function perfil(): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         return $this->render('main/perfil.html.twig', [
             'controller_name' => 'MainController',
+            'puntos' => $puntos
         ]);
     }
 
@@ -106,6 +120,13 @@ class MainController extends AbstractController
      */
     public function verificarDniAdmin(Request $request, SluggerInterface $slugger): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $user = $this->getUser();
         $form = $this->createForm(DniVerificadorType::class, $user);
 
@@ -151,6 +172,7 @@ class MainController extends AbstractController
         }
         return $this->render('main/dniVerficado.html.twig', [
             'dniVerificador' => $form->createView(),
+            'puntos' => $puntos
         ]);
     }
 
@@ -160,10 +182,18 @@ class MainController extends AbstractController
      */
     public function verificarDniAdminFoto(): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $users = $this->getDoctrine()->getRepository(User::class)->findAll();
         return $this->render('main/verificarDniAdminFoto.html.twig', [
             'controller_name' => 'MainController',
-            'users' => $users
+            'users' => $users,
+            'puntos' => $puntos
         ]);
     }
 
@@ -190,10 +220,18 @@ class MainController extends AbstractController
      */
     public function verVentajas(): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $ventajas = $this->getDoctrine()->getRepository(Ventaja::class)->findAll();
         return $this->render('main/ventajas.html.twig', [
             'controller_name' => 'MainController',
-            'ventajas' => $ventajas
+            'ventajas' => $ventajas,
+            'puntos' => $puntos
         ]);
     }
 
@@ -203,9 +241,17 @@ class MainController extends AbstractController
     public function verMisiones(): Response
     {
         $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
         return $this->render('main/misiones.html.twig', [
             'controller_name' => 'MainController',
-            'misiones' => $misiones
+            'misiones' => $misiones,
+            'puntos' => $puntos
         ]);
     }
 
@@ -215,10 +261,18 @@ class MainController extends AbstractController
      */
     public function misionesCompletadas(): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $misiones = $this->getDoctrine()->getRepository(Mision::class)->findAll();
         return $this->render('main/misionesVerificar.html.twig', [
             'controller_name' => 'MainController',
-            'misiones' => $misiones
+            'misiones' => $misiones,
+            'puntos' => $puntos
         ]);
     }
 
@@ -245,10 +299,18 @@ class MainController extends AbstractController
      */
     public function verEventos(): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $eventos = $this->getDoctrine()->getRepository(Evento::class)->findAll();
         return $this->render('main/eventos.html.twig', [
             'controller_name' => 'MainController',
-            'eventos' => $eventos
+            'eventos' => $eventos,
+            'puntos' => $puntos
         ]);
     }
 
@@ -749,10 +811,18 @@ class MainController extends AbstractController
      */
     public function verNoticias(): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $noticias = $this->getDoctrine()->getRepository(Noticia::class)->findAll();
         return $this->render('main/noticias.html.twig', [
             'controller_name' => 'MainController',
-            'noticias' => $noticias
+            'noticias' => $noticias,
+            'puntos' => $puntos
         ]);
     }
 
@@ -761,10 +831,18 @@ class MainController extends AbstractController
      */
     public function calendario(): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $eventos = $this->getDoctrine()->getRepository(Evento::class)->findAll();
         return $this->render('main/calendario.html.twig', [
             'controller_name' => 'MainController',
-            'evento' => $eventos
+            'evento' => $eventos,
+            'puntos' => $puntos
         ]);
     }
 

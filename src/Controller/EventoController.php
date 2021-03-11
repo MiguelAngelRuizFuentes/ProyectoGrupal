@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Evento;
+use App\Entity\Mision;
 use App\Form\EventoType;
 use App\Repository\EventoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -36,8 +37,13 @@ class EventoController extends AbstractController
      */
     public function new(Request $request, SluggerInterface $slugger): Response
     {   
-
-        
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $evento = new Evento();
         $fecha = new \DateTime();
         $form = $this->createForm(EventoType::class, $evento);
@@ -84,6 +90,7 @@ class EventoController extends AbstractController
         return $this->render('evento/new.html.twig', [
             'evento' => $evento,
             'form' => $form->createView(),
+            'puntos' => $puntos
         ]);
     }
 
