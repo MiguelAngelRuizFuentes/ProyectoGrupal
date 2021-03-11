@@ -83,7 +83,6 @@ class MainController extends AbstractController
         $response = new Response(stream_get_contents($f));
         $response->headers->set('Content-Type', 'application/csv');
         $response->headers->set('Content-Disposition', 'attachment; filename='.$csv.'');
-        $response->sendHeaders();
         fclose($f);
         return $response;
     }

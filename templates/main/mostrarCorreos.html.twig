@@ -19,9 +19,12 @@ Correos:
         $.ajax({
             type: "GET",
             url: "/exportar",
-            success: function() {
-                alert("Exportación completada");
-
+            success: function(data)  { 
+                var blob = new Blob([data]); 
+                var link = document.createElement('a'); 
+                link.href = window.URL.createObjectURL(blob); 
+                link.download = "correos.csv"; 
+                link.click(); 
             },
             error: fail
         });
