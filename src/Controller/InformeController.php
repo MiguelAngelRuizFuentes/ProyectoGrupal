@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Informe;
-use App\Form\InformeType;
+use App\Form\Informe1Type;
 use App\Repository\InformeRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class InformeController extends AbstractController
     public function new(Request $request): Response
     {
         $informe = new Informe();
-        $form = $this->createForm(InformeType::class, $informe);
+        $form = $this->createForm(Informe1Type::class, $informe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class InformeController extends AbstractController
      */
     public function edit(Request $request, Informe $informe): Response
     {
-        $form = $this->createForm(InformeType::class, $informe);
+        $form = $this->createForm(Informe1Type::class, $informe);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
