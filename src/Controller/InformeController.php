@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Mision;
 use App\Entity\Informe;
 use App\Form\Informe1Type;
 use App\Repository\InformeRepository;
@@ -20,8 +21,16 @@ class InformeController extends AbstractController
      */
     public function index(InformeRepository $informeRepository): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         return $this->render('informe/index.html.twig', [
             'informes' => $informeRepository->findAll(),
+            'puntos' => $puntos
         ]);
     }
 
@@ -30,6 +39,13 @@ class InformeController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
+        $puntos = 0;
+        foreach($misiones as $mision ) {
+            if($mision->getCompletada() == true) {
+                $puntos += $mision->getPuntos();
+            }
+        }
         $informe = new Informe();
         $form = $this->createForm(Informe1Type::class, $informe);
         $form->handleRequest($request);
@@ -45,6 +61,7 @@ class InformeController extends AbstractController
         return $this->render('informe/new.html.twig', [
             'informe' => $informe,
             'form' => $form->createView(),
+            'puntos' => $puntos
         ]);
     }
 

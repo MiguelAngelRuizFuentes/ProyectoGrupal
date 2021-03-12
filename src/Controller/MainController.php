@@ -26,6 +26,7 @@ class MainController extends AbstractController
      */
     public function index(): Response
     {
+       
         $misiones = $this->getDoctrine()->getRepository(Mision::class)->findBy(array('usuario' => $this->getUser()));
         $puntos = 0;
         foreach($misiones as $mision ) {
