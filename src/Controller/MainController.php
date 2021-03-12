@@ -189,26 +189,6 @@ class MainController extends AbstractController
     }
 
     /**
-     * @Route("/informes", name="informes")
-     * @IsGranted("ROLE_ADMIN")
-     */
-    public function informes(Request $request): Response
-    {
-        $informes = [];
-        if($request->query->get('informe') == "municipio") {
-            $informes = $this->getDoctrine()->getRepository(User::class)->findBy(array('municipio' => $request->query->get('informe')));
-        }else if($request->query->get('informe') == "provincia") {
-            $informes = $this->getDoctrine()->getRepository(User::class)->findBy(array('provincia' => $request->query->get('informe')));
-        }else if($request->query->get('informe') == "gustos") {
-            $informes = $this->getDoctrine()->getRepository(User::class)->findBy(array('municipio' => $request->query->get('informe')));
-        }else if($request->query->get('informe') == "notificaciones") {
-            $informes = $this->getDoctrine()->getRepository(User::class)->findBy(array('recibirComunicacionesComerciales' => $request->query->get('informe')));
-        }
-
-        return new Response($informes);
-    }
-
-    /**
      * @Route("/verificarFotoDni", name="verificarFotoDni")
      * @IsGranted("ROLE_ADMIN")
      */

@@ -9,21 +9,6 @@ Correos:
 {% endfor %}
 <button class="btn btn-primary" onClick="exportarCorreos();">Exportar correos</button>
 
-<br>
-<br>
-Informes:
-<select id="informe" name="informes">
-    <option value="" selected>--Seleccione opción--</option>
-    <option value="municipio">Municipio</option>
-    <option value="provincia">Localidad</option>
-    <option value="gustos">Gustos</option>
-    <option value="notificaciones">Recibir notificaciones</option>
-</select>
-
-<ul id="informesLista">
-
-</ul>
-
 <script>
     function exportarCorreos() {
 
@@ -44,23 +29,5 @@ Informes:
             error: fail
         });
     }
-
-    // Informes al hacer change en el select:
-    $("#informe").change(function() {
-        $.ajax({
-            type: "GET",
-            url: "/informes",
-            data: {'informe': $(this).val()},
-            success: function(data) {
-                console.log(data);
-                for (var i = 0; i < data.length; i++){
-                    $("informesLista").append("<li>"+ data[i].nombre +"</li>");
-                }
-            },
-            error: function()  { 
-                alert("Fallo al conseguir los informes por " + $(this).val()); 
-            }
-        });
-    });
 </script>
 {% endblock %}
