@@ -11,18 +11,18 @@
 <hr>
 
 <div id="email">
-    <h3>Email: </h3>
-    <p>{{app.user.email}}</p>
+    <h3 style="color:black; padding:10px">Email: </h3>
+    <p style="color:black; padding:10px">{{app.user.email}}</p>
 </div>
 
 <div id="nombre">
-    <h3>Nombre: </h3>
+    <h3 style="color:black; padding:10px">Nombre: </h3>
     {% if app.user.nombre != null %}
-        <p>{{app.user.nombre}}</p>
+        <p style="color:black; padding:10px">{{app.user.nombre}}</p>
     {% else %}
-        <p>No ha introducido su nombre</p>
+        <p style="color:black; padding:10px">No ha introducido su nombre</p>
     {% endif %}
-    <a>Editar nombre</a>
+    <a style="color:black; padding:10px">Editar nombre</a>
     <div class="mostrar">
         <input type="text" name="nombre" placeholder="Introduzca su nombre">
         <button>Enviar</button><br>
@@ -30,13 +30,13 @@
 </div>
 
 <div id="apellido1">
-    <h3>Primer apellido: </h3>
+    <h3 style="color:black; padding:10px">Primer apellido: </h3>
     {% if app.user.apellido1 != null %}
-        <p>{{app.user.apellido1}}</p>
+        <p style="color:black; padding:10px">{{app.user.apellido1}}</p>
     {% else %}
-        <p>No ha introducido su primer apellido</p>
+        <p style="color:black; padding:10px">No ha introducido su primer apellido</p>
     {% endif %}
-    <a>Editar primer apellido</a>
+    <a style="color:black; padding:10px">Editar primer apellido</a>
     <div class="mostrar">
         <input type="text" name="apellido1" placeholder="Introduzca su primer apellido">
         <button>Enviar</button><br>
@@ -44,13 +44,13 @@
 </div>
 
 <div id="apellido2">
-    <h3>Segundo apellido: </h3>
+    <h3 style="color:black; padding:10px">Segundo apellido: </h3>
     {% if app.user.apellido2 != null %}
-        <p>{{app.user.apellido2}}</p>
+        <p style="color:black; padding:10px">{{app.user.apellido2}}</p>
     {% else %}
-        <p>No ha introducido su segundo apellido</p>
+        <p style="color:black; padding:10px">No ha introducido su segundo apellido</p>
     {% endif %}
-    <a>Editar segundo apellido</a>
+    <a style="color:black; padding:10px">Editar segundo apellido</a>
     <div class="mostrar">
         <input type="text" name="apellido2" placeholder="Introduzca su segundo apellido">
         <button>Enviar</button><br>
@@ -58,13 +58,13 @@
 </div>
 
 <div id="dni">
-    <h3>DNI: </h3>
+    <h3 style="color:black; padding:10px">DNI: </h3>
     {% if app.user.dni != null %}
-        <p>{{app.user.dni}}</p>
+        <p style="color:black; padding:10px">{{app.user.dni}}</p>
     {% else %}
-        <p>No ha introducido su DNI</p>
+        <p style="color:black; padding:10px">No ha introducido su DNI</p>
     {% endif %}
-    <a>Editar DNI</a>
+    <a style="color:black; padding:10px">Editar DNI</a>
     <div class="mostrar">
         <input type="text" name="dni" placeholder="Introduzca su DNI">
         <button>Enviar</button><br>
@@ -72,13 +72,13 @@
 </div>
 
 <div id="fechaNacimiento">
-    <h3>Fecha de nacimiento: </h3>
+    <h3 style="color:black; padding:10px">Fecha de nacimiento: </h3>
     {% if app.user.fechaNacimiento != null %}
-        <p>{{app.user.fechaNacimiento|date("Y-m-d")}}</p>
+        <p style="color:black; padding:10px">{{app.user.fechaNacimiento|date("Y-m-d")}}</p>
     {% else %}
-        <p>No ha introducido su fecha de nacimiento</p>
+        <p style="color:black; padding:10px">No ha introducido su fecha de nacimiento</p>
     {% endif %}
-    <a>Editar fecha de nacimiento</a>
+    <a style="color:black; padding:10px">Editar fecha de nacimiento</a>
     <div class="mostrar">
         <input type="date" name="fechaNacimiento">
         <button>Enviar</button><br>
@@ -86,15 +86,15 @@
 </div>
 
 <div id="genero">
-    <h3>Género: </h3>
+    <h3 style="color:black; padding:10px">Género: </h3>
     {% if app.user.genero != null %}
-        <p>{{app.user.genero}}</p>
+        <p style="color:black; padding:10px">{{app.user.genero}}</p>
     {% else %}
-        <p>No ha introducido su género</p>
+        <p style="color:black; padding:10px">No ha introducido su género</p>
     {% endif %}
-    <a>Editar género</a>
+    <a style="color:black; padding:10px">Editar género</a>
     <div class="mostrar">
-        <p>Seleccione su género</p>
+        <p style="color:black; padding:10px">Seleccione su género</p>
         <input type="radio" name="genero" value="Hombre"> Hombre<br>
         <input type="radio" name="genero" value="Mujer"> Mujer<br>
         <input type="radio" name="genero" value="Otro"> Otro<br>
@@ -104,13 +104,13 @@
 </div>
 
 <div id="calle">
-    <h3>Calle: </h3>
+    <h3 style="color:black; padding:10px">Calle: </h3>
     {% if app.user.calle != null %}
-        <p>{{app.user.calle}}</p>
+        <p style="color:black; padding:10px">{{app.user.calle}}</p>
     {% else %}
-        <p>No ha introducido su calle</p>
+        <p style="color:black; padding:10px">No ha introducido su calle</p>
     {% endif %}
-    <a>Editar calle</a>
+    <a style="color:black; padding:10px">Editar calle</a>
     <div class="mostrar">
         <input type="text" name="calle" placeholder="Introduzca su calle">
         <button>Enviar</button><br>
@@ -118,13 +118,13 @@
 </div>
 
 <div id="numeroDireccion">
-    <h3>Número domicilio: </h3>
+    <h3 style="color:black; padding:10px">Número domicilio: </h3>
     {% if app.user.numeroDireccion != null %}
-        <p>{{app.user.numeroDireccion}}</p>
+        <p style="color:black; padding:10px">{{app.user.numeroDireccion}}</p>
     {% else %}
-        <p>No ha introducido su número de domicilio</p>
+        <p style="color:black; padding:10px">No ha introducido su número de domicilio</p>
     {% endif %}
-    <a>Editar número de domicilio</a>
+    <a style="color:black; padding:10px">Editar número de domicilio</a>
     <div class="mostrar">
         <input type="text" name="numeroDireccion" placeholder="Introduzca su número de domicilio">
         <button>Enviar</button><br>
@@ -132,13 +132,13 @@
 </div>
 
 <div id="escaleraPiso">
-    <h3>Escalera/Piso/Etc: </h3>
+    <h3 style="color:black; padding:10px">Escalera/Piso/Etc: </h3>
     {% if app.user.escaleraPiso != null %}
-        <p>{{app.user.escaleraPiso}}</p>
+        <p style="color:black; padding:10px">{{app.user.escaleraPiso}}</p>
     {% else %}
-        <p>No ha introducido su escalera/piso/etc.</p>
+        <p style="color:black; padding:10px">No ha introducido su escalera/piso/etc.</p>
     {% endif %}
-    <a>Editar escalera/piso/etc.</a>
+    <a style="color:black; padding:10px">Editar escalera/piso/etc.</a>
     <div class="mostrar">
         <input type="text" name="escaleraPiso" placeholder="Introduzca su escalera/piso/etc.">
         <button>Enviar</button><br>
@@ -146,13 +146,13 @@
 </div>
 
 <div id="municipio">
-    <h3>Municipio: </h3>
+    <h3 style="color:black; padding:10px">Municipio: </h3>
     {% if app.user.municipio != null %}
-        <p>{{app.user.municipio}}</p>
+        <p style="color:black; padding:10px">{{app.user.municipio}}</p>
     {% else %}
-        <p>No ha introducido su municipio</p>
+        <p style="color:black; padding:10px">No ha introducido su municipio</p>
     {% endif %}
-    <a>Editar municipio</a>
+    <a style="color:black; padding:10px">Editar municipio</a>
     <div class="mostrar">
         <input type="text" name="municipio" placeholder="Introduzca su municipio">
         <button>Enviar</button><br>
@@ -160,13 +160,13 @@
 </div>
 
 <div id="provincia">
-    <h3>Provincia: </h3>
+    <h3 style="color:black; padding:10px">Provincia: </h3>
     {% if app.user.provincia != null %}
-        <p>{{app.user.provincia}}</p>
+        <p style="color:black; padding:10px">{{app.user.provincia}}</p>
     {% else %}
-        <p>No ha introducido su municipio</p>
+        <p style="color:black; padding:10px">No ha introducido su municipio</p>
     {% endif %}
-    <a>Editar provincia</a>
+    <a style="color:black; padding:10px">Editar provincia</a>
     <div class="mostrar">
         <input type="text" name="provincia" placeholder="Introduzca su provincia">
         <button>Enviar</button><br>
@@ -174,13 +174,13 @@
 </div>
 
 <div id="codigoPostal">
-    <h3>Código Postal: </h3>
+    <h3 style="color:black; padding:10px">Código Postal: </h3>
     {% if app.user.codigoPostal != null %}
-        <p>{{app.user.codigoPostal}}</p>
+        <p style="color:black; padding:10px">{{app.user.codigoPostal}}</p>
     {% else %}
-        <p>No ha introducido su codigo postal</p>
+        <p style="color:black; padding:10px">No ha introducido su codigo postal</p>
     {% endif %}
-    <a>Editar codigo postal</a>
+    <a style="color:black; padding:10px">Editar codigo postal</a>
     <div class="mostrar">
         <input type="number" name="codigoPostal" min="10000" max="99999">
         <button>Enviar</button><br>
@@ -188,13 +188,13 @@
 </div>
 
 <div id="movil">
-    <h3>Teléfono móvil: </h3>
+    <h3 style="color:black; padding:10px">Teléfono móvil: </h3>
     {% if app.user.telefonoMovil != null %}
-        <p>{{app.user.telefonoMovil}}</p>
+        <p style="color:black; padding:10px">{{app.user.telefonoMovil}}</p>
     {% else %}
-        <p>No ha introducido su telefono móvil</p>
+        <p style="color:black; padding:10px">No ha introducido su telefono móvil</p>
     {% endif %}
-    <a>Editar telefono móvil</a>
+    <a style="color:black; padding:10px">Editar telefono móvil</a>
     <div class="mostrar">
         <input type="number" name="movil" min="600000000" max="799999999">
         <button>Enviar</button><br>
@@ -202,13 +202,13 @@
 </div>
 
 <div id="fijo">
-    <h3>Teléfono Fijo: </h3>
+    <h3 style="color:black; padding:10px">Teléfono Fijo: </h3>
     {% if app.user.telefonoFijo != null %}
-        <p>{{app.user.telefonoFijo}}</p>
+        <p style="color:black; padding:10px">{{app.user.telefonoFijo}}</p>
     {% else %}
-        <p>No ha introducido su telefono fijo</p>
+        <p style="color:black; padding:10px">No ha introducido su telefono fijo</p>
     {% endif %}
-    <a>Editar telefono fijo</a>
+    <a style="color:black; padding:10px">Editar telefono fijo</a>
     <div class="mostrar">
         <input type="number" name="fijo" min="800000000" max="999999999">
         <button>Enviar</button><br>
@@ -216,13 +216,13 @@
 </div>
 
 <div id="webPersonal">
-    <h3>Web personal: </h3>
+    <h3 style="color:black; padding:10px">Web personal: </h3>
     {% if app.user.webPersonal != null %}
-        <p>{{app.user.webPersonal}}</p>
+        <p style="color:black; padding:10px">{{app.user.webPersonal}}</p>
     {% else %}
-        <p>No ha introducido su web personal</p>
+        <p style="color:black; padding:10px">No ha introducido su web personal</p>
     {% endif %}
-    <a>Editar web personal</a>
+    <a style="color:black; padding:10px">Editar web personal</a>
     <div class="mostrar">
         <input type="text" name="webPersonal" placeholder="Introduzca su web personal">
         <button>Enviar</button><br>
@@ -230,10 +230,10 @@
 </div>
 
 <div id="plataformas">
-    <h3>Plataformas de juego: </h3>
-    <a>Editar plataformas de juego</a>
+    <h3 style="color:black; padding:10px">Plataformas de juego: </h3>
+    <a style="color:black; padding:10px">Editar plataformas de juego</a>
     <div class="mostrar">
-        <p>Seleccione sus plataformas de juego</p>
+        <p style="color:black; padding:10px">Seleccione sus plataformas de juego</p>
         {% if app.user.plataformasJuego != null %}
             <input type="checkbox" name="consolaSobremesa" value="consolaSobremesa" {% if app.user.plataformasJuego[0] %} checked {% endif %}> Consola sobremesa<br>
             <input type="checkbox" name="consolaPortatil" value="consolaPortatil" {% if app.user.plataformasJuego[1] %} checked {% endif %}> Consola portatil<br>
@@ -260,10 +260,10 @@
 </div>
 
 <div id="tiposJuego">
-    <h3>Tipos de juego: </h3>
-    <a>Editar tipos de juego</a>
+    <h3 style="color:black; padding:10px">Tipos de juego: </h3>
+    <a style="color:black; padding:10px">Editar tipos de juego</a>
     <div class="mostrar">
-        <p>Seleccione sus tipos de juego</p>
+        <p style="color:black; padding:10px">Seleccione sus tipos de juego</p>
         {% if app.user.tiposJuego != null %}
             <input type="checkbox" name="moba" value="moba" {% if app.user.tiposJuego[0] %} checked {% endif %}> MOBA<br>
             <input type="checkbox" name="shooter" value="shooter" {% if app.user.tiposJuego[1] %} checked {% endif %}> Shooter<br>
@@ -292,10 +292,10 @@
 </div>
 
 <div id="socialMedia">
-    <h3>Cuentas sociales: </h3>
-    <a>Editar cuentas sociales</a>
+    <h3 style="color:black; padding:10px">Cuentas sociales: </h3>
+    <a style="color:black; padding:10px">Editar cuentas sociales</a>
     <div class="mostrar">
-        <p>Seleccione sus cuentas sociales</p>
+        <p style="color:black; padding:10px">Seleccione sus cuentas sociales</p>
         {% if app.user.cuentasSociales != null %}
             <input type="text" name="twitter" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[0] %}{{app.user.cuentasSociales[0]}}{% endif %}"> Twitter [<i>{% if app.user.cuentasSociales[0] %} {{app.user.cuentasSociales[0]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
             <input type="text" name="facebook" placeholder="Pon tu nombre de usuario" value="{% if app.user.cuentasSociales[1] %}{{app.user.cuentasSociales[1]}}{% endif %}"> Facebook [<i>{% if app.user.cuentasSociales[1] %} {{app.user.cuentasSociales[1]}} {% else %} No has introducido tu nombre de usuario {% endif %}</i>]<br>
@@ -322,13 +322,13 @@
 </div>
 
 <div id="playerName">
-    <h3>Nombre jugador: </h3>
+    <h3 style="color:black; padding:10px">Nombre jugador: </h3>
     {% if app.user.nombreJugador != null %}
-        <p>{{app.user.nombreJugador}}</p>
+        <p style="color:black; padding:10px">{{app.user.nombreJugador}}</p>
     {% else %}
-        <p>No ha introducido su nombre de jugador</p>
+        <p style="color:black; padding:10px">No ha introducido su nombre de jugador</p>
     {% endif %}
-    <a>Editar nombre de jugador</a>
+    <a style="color:black; padding:10px">Editar nombre de jugador</a>
     <div class="mostrar">
         <input type="text" name="nombreJugador" placeholder="Introduzca su nombre de jugador">
         <button>Enviar</button><br>
@@ -336,10 +336,10 @@
 </div>
 
 <div id="booleans">
-    <h3>Aceptaciones: </h3>
-    <a>Editar aceptaciones</a>
+    <h3 style="color:black; padding:10px">Aceptaciones: </h3>
+    <a style="color:black; padding:10px">Editar aceptaciones</a>
     <div class="mostrar">
-        <p>Acepte las siguientes condiciones</p>
+        <p style="color:black; padding:10px">Acepte las siguientes condiciones</p>
         <input type="checkbox" name="privacidad" value="privacidad" checked> Política de privacidad.<br>
         <input type="checkbox" name="almacenarDatos" value="almacenarDatos" {% if app.user.permisoAlmacenarDatos == true %} checked {% endif %}> Permiso para almacenar datos.<br>
         <input type="checkbox" name="comunicaciones" value="comunicaciones" {% if app.user.recibirComunicacionesComerciales == true %} checked {% endif %}> Aceptar recibir comunicaciones comerciales.<br>
