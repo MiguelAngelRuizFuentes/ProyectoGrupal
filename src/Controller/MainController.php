@@ -22,7 +22,6 @@ class MainController extends AbstractController
 {
     /**
      * @Route("/", name="main")
-     * @IsGranted("ROLE_ADMIN")
      * @IsGranted("ROLE_USER")
      */
     public function index(): Response
